@@ -4,7 +4,9 @@ public class livros {
 	
 	private String nome;
 	private int páginas;
-	private String autor;
+	private Autor autor;
+	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -17,10 +19,10 @@ public class livros {
 	public void setPáginas(int páginas) {
 		this.páginas = páginas;
 	}
-	public String getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
-	public void setAutor(String autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 
