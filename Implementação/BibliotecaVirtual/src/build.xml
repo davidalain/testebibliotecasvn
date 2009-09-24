@@ -38,7 +38,7 @@
   		<fileset dir=".">
   			<include name="TEST-*.xml"/>
   		</fileset>
-  		<report format="frames" todir="./html"/>
+  		<report format="frames" todir="../html"/>
   	</junitreport>
   </target>
 
