@@ -6,6 +6,11 @@ import junit.framework.TestCase;
 
 public class TesteAluguelLivro extends TestCase 
 {
+	private MockControladorExemplar controladorExemplaresVazio = new MockControladorExemplar();
+	
+	private MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
+	
+	MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
 
 	private void setUp()
 	{
@@ -15,8 +20,7 @@ public class TesteAluguelLivro extends TestCase
 
 	public void testExemplarDisponivelEmColecaoVazia()
 	{
-		MockControladorExemplar controladorExemplaresVazio = new MockControladorExemplar();
-
+		
 		String nomeLivroProcuradoEmColecaoVazia = "LivroProcurado1";
 
 		Livro livroProcuradoEmColecaoVazia = new Livro(nomeLivroProcuradoEmColecaoVazia);
@@ -29,7 +33,7 @@ public class TesteAluguelLivro extends TestCase
 
 	public void testExemplarDisponivelExiste()
 	{
-		MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
+		
 
 		Livro livroProcurado1 = new Livro("LivroProcurado1");
 
@@ -52,7 +56,7 @@ public class TesteAluguelLivro extends TestCase
 
 	public void testExemplarDisponivelNaoExiste()
 	{
-		MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
+		
 
 		Livro livroProcurado1 = new Livro("LivroProcurado1");
 
