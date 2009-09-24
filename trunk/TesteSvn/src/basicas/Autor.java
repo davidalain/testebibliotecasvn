@@ -4,6 +4,12 @@ public class Autor {
 
 	private String nome;
 	private int idade;
+	
+	public Autor(String nome, int idade) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+	}
 	public String getNome() {
 		return nome;
 	}
