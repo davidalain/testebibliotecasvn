@@ -1,60 +1,56 @@
 package testes;
 
-import java.util.ArrayList;
-
 import junit.framework.TestCase;
+
 
 public class TesteAluguelLivro extends TestCase 
 {
 	private MockControladorExemplar controladorExemplaresVazio = new MockControladorExemplar();
 	
-	private MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
+	private MockControladorExemplar controladorComExemplarProcuradoDisponivel = new MockControladorExemplar();
 	
-	MockControladorExemplar controladorComExemplarProcurado = new MockControladorExemplar();
+	private MockControladorExemplar controladorComExemplarProcuradoNaoDisponivel = new MockControladorExemplar();
 
-	private void setUp()
+	@Override
+	protected void setUp() throws Exception 
 	{
+		String nomeLivroProcuradoEmColecaoVazia = "LivroProcurado1";
+		
+		Livro livroProcuradoEmColecaoVazia = new Livro(nomeLivroProcuradoEmColecaoVazia);
+		
+		controladorExemplaresVazio.cadastrar(livroProcurado1);
 
+		controladorExemplaresVazio.cadastrar(livroProcurado1);
+
+		controladorExemplaresVazio.cadastrar(livroProcurado1);
 	}
 
 
 	public void testExemplarDisponivelEmColecaoVazia()
 	{
-		
-		String nomeLivroProcuradoEmColecaoVazia = "LivroProcurado1";
-
-		Livro livroProcuradoEmColecaoVazia = new Livro(nomeLivroProcuradoEmColecaoVazia);
-
 		boolean existeExemplar = controladorExemplaresVazio.exemplarDisponivel(livroProcuradoEmColecaoVazia);
 
 		assertFalse("Um exemplar não está disponível se a coleção de exemplares está vazia", existeExemplar);
 
 	}
 
-	public void testExemplarDisponivelExiste()
+	public void testExemplarDisponivel()
 	{
 		
-
-		Livro livroProcurado1 = new Livro("LivroProcurado1");
+		Livro livroProcurado = new Livro("LivroProcurado1");
 
 		Livro livroProcurado2 = new Livro("LivroProcurado2");
 
-		controladorComExemplarProcurado.cadastrar(livroProcurado1);
+		controladorComExemplarProcuradoDisponivel.alugar(livroProcurado1);
 
-		controladorComExemplarProcurado.cadastrar(livroProcurado1);
-
-		controladorComExemplarProcurado.cadastrar(livroProcurado1);
-
-		controladorComExemplarProcurado.cadastrar(livroProcurado2);
-
-		controladorComExemplarProcurado.alugar(livroProcurado1);
-
-		controladorComExemplarProcurado.alugar(livroProcurado1);
+		controladorComExemplarProcuradoDisponivel.alugar(livroProcurado1);
+		
+		controladorComExemplarProcuradoDisponivel.cadastrar(livroProcurado2);
 
 		assertTrue("Se existe ao menos um exemplar com status disponivel, então o exemplar está disponível", controladorComExemplarProcurado.exemplarDisponivel(livroProcurado1));
 	}
 
-	public void testExemplarDisponivelNaoExiste()
+	public void testExemplarNaoDisponivel()
 	{
 		
 
