@@ -2,7 +2,9 @@ package testes;
 
 import java.util.List;
 
-public class TesteEntrarFilaEspera {
+import junit.framework.TestCase;
+
+public class TesteEntrarFilaEspera extends TestCase {
 	
 	public void testEntrarFilaEspera()
 	{
@@ -13,4 +15,9 @@ public class TesteEntrarFilaEspera {
 		assertTrue("Não existe lista de espera", cFilas.contemAluno(alunoAlvo, livro));
 	}
 	
+	
+	public static void main(String[] args) 
+	{
+		junit.textui.TestRunner.run(TesteEntrarFilaEspera.class);
+	}
 }

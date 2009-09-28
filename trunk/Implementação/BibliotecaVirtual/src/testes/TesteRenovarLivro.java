@@ -84,6 +84,9 @@ public class TesteRenovarLivro extends TestCase {
 		assertFalse("Livro não pode ser renovado", renovarExemplar(alunoAlvo,exemplarAlvo));
 	}
 	
-	
+	public static void main(String[] args) 
+	{
+		junit.textui.TestRunner.run(TesteRenovarLivro.class);
+	}
 
 }

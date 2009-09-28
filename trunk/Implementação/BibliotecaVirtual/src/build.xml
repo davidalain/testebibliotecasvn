@@ -31,7 +31,7 @@
     <junit printsummary="on">
       <classpath refid="classpath.test" />
       <formatter type="xml"/>
-      <test name="primarios.AllTests" />
+      <test name="testes.AllTests" />
     </junit>
   	
   	<junitreport todir=".">
