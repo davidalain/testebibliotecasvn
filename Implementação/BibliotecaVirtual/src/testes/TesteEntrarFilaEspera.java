@@ -7,10 +7,10 @@ public class TesteEntrarFilaEspera {
 	public void testEntrarFilaEspera()
 	{
 		ControladorFilaEspera filas = new ControladorFila();
-		Livro livros = new Livro();
+		Livro livro = new Livro();
 		Aluno alunoAlvo = new Aluno();
-		filas.getLista(livros).add(alunoAlvo);
-		assertTrue("Não existe lista de espera", filas.getLista(livros).contains(alunoAlvo));
+		filas.inserirAluno(alunoAlvo, livro);
+		assertTrue("Não existe lista de espera", filas.contemAluno(alunoAlvo, livro));
 	}
 	
 }
