@@ -10,7 +10,7 @@ Ambiente de desenvolvimento:
    -Eclipse IDE for Java EE Developers (Versão GALILEO).
 
 Arcabouço de testes:
-   -JUnit.
+   -JUnit 3S.
 
 Ferramenta para a produção de builds:
    -ANT.
@@ -20,3 +20,6 @@ Ferramenta para o registo de histórias de usuários:
 
 Ferramentas para dar suporte à escrita de histórias de usuários:
    - Microsoft Excel e Microsoft Word.
+
+Servidor de aplicação Java para Web
+   - TomCat v6.0
