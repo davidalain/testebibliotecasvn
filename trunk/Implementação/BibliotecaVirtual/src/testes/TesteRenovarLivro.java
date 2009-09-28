@@ -1,5 +1,6 @@
 package testes;
 
+import java.sql.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -9,28 +10,36 @@ public class TesteRenovarLivro extends TestCase {
 	
 	
 	public void testLivroEstaAtrasadoVerdadeiro(){
+		ControladorLivrosAlugados cLivros = new ControladorLivrosAlugados();
+		Exemplar ex = new Exemplar();
+		Date devolucao = cLivros.dataDevolucao(ex);
+		Date atual = Date.this.getDate();
 		
+		assertTrue( devolucao.after(atual));
 	}
 	
 	public void testLivroEstaAtrasadoFalso(){
+		ControladorLivrosAlugados cLivros = new ControladorLivrosAlugados();
+		Exemplar ex = new Exemplar();
+		Date devolucao = cLivros.dataDevolucao(ex);
+		Date atual = Date.this.getDate();
 		
+		assertTrue( devolucao.before(atual));
 	}
 	
 	public void testPossuiFilaEsperaVerdadeiro(){
-	
+		ControladorFilaEspera cFilas = new ControladorFila();
 		Livro livroAlvo = new Livro();
 		Aluno alunoAlvo = new Aluno();
-		livroAlvo.setListaEspera(new List(alunoAlvo));
-		assertTrue("Existe lista de espera não vazia", possuiFilaEspera(livroAlvo).size()==1);
+		cFilas.criarLista(new List(alunoAlvo));
+		assertTrue("Existe lista de espera não vazia", possuiFilaEspera(livroAlvo));
 	}
 	
 	public void testPossuiFilaEsperaFalso(){
+		ControladorFilaEspera cFilas = new ControladorFila();
 		Livro livroAlvo = new Livro();
-		Aluno alunoAlvo = new Aluno();
-		List listaVazia = new List(alunoAlvo);
-		listaVazia.remove(alunoAlvo);
-		livroAlvo.setListaEspera(listaVazia);
-		assertTrue("Não existe lista de espera", possuiFilaEspera(livroAlvo).size ==0);
+		cFilas.removerLista(livroAlvo);
+		assertTrue("Não existe lista de espera", possuiFilaEspera(livroAlvo)==0);
 
 	}
 	
