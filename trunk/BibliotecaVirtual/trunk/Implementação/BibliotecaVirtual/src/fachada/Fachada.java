@@ -1,6 +1,8 @@
 package fachada;
 
-import controlador.ControladorAluno;
+import basicas.*;
+import controlador.*;
+import exceptions.*;
 
 public class Fachada {
 	private ControladorAluno ctrlAlunos;
@@ -9,7 +11,7 @@ public class Fachada {
 	public void Alugar(Aluno a, Exemplar e)
 	{
 		if(!ctrlAlunos.validarSituacaoFinanceira(a))
-			throw
+			throw new AlunoNaoCadastradoException();
 	}
 	
 	
