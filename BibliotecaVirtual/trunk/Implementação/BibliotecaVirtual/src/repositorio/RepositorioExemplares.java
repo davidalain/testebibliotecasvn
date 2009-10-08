@@ -28,4 +28,12 @@ public class RepositorioExemplares {
 		bancoDados.atualizar(exemplar);
 		
 	}
+	
+	public boolean existeFilaEspera(Exemplar exemplar){
+		//pegar o ISBN
+		
+		return true;
+	}
+	
+	
 }
