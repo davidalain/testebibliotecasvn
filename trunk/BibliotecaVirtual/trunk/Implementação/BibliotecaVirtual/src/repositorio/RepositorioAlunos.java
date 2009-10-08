@@ -4,6 +4,11 @@ import basicas.Aluno;
 
 public class RepositorioAlunos {
 
+	public RepositorioAlunos(BancoDados bancoDados) {
+		super();
+		this.bancoDados = bancoDados;
+	}
+
 	private BancoDados bancoDados;
 	
 	public void inserir (Aluno aluno){
