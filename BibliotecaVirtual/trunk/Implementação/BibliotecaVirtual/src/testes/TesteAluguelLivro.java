@@ -81,7 +81,7 @@ public class TesteAluguelLivro extends TestCase
 		String nome = "Aluno";
 		Aluno alunoAlvo = new Aluno(nome);
 		alunoAlvo.setDivida(2);
-		assertTrue("Aluno devendo.", validarSituacaoFinanceira(alunoAlvo)>0);
+		assertTrue("Aluno devendo.", validarSituacaoFinanceira(alunoAlvo) == false);
 
 
 	}
@@ -91,7 +91,7 @@ public class TesteAluguelLivro extends TestCase
 		String nome = "Aluno";
 		Aluno alunoAlvo = new Aluno(nome);
 		alunoAlvo.setDivida(0);
-		assertTrue("Aluno com situação financeira correta.", validarSituacaoFinanceira(alunoAlvo)==0);
+		assertTrue("Aluno com situação financeira correta.", validarSituacaoFinanceira(alunoAlvo)== true);
 
 	}
 	
