@@ -19,7 +19,7 @@ public class RepositorioFuncionarios {
 		bancoDados.remover(funcionario);
 	}
 	
-	public Aluno buscar (Funcionario funcionario){
+	public Funcionario buscar (Funcionario funcionario){
 		return bancoDados.buscar(funcionario);
 		
 	}
