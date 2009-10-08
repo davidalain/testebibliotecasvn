@@ -1,0 +1,1 @@
+- No arquivo TesteAluguelLivro.java duas alterações foram feitas nos métodos testSituacaoFinanceiraNegativa() e testSituacaoFinanceiraOK().
