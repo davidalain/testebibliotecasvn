@@ -1,10 +1,14 @@
 package repositorio;
 
-import basicas.Aluno;
 import basicas.Funcionario;
 
 public class RepositorioFuncionarios {
 	private BancoDados bancoDados;
+	
+	public RepositorioFuncionarios()
+	{
+		
+	}
 	
 	public void inserir (Funcionario funcionario){
 		bancoDados.inserir(funcionario);
