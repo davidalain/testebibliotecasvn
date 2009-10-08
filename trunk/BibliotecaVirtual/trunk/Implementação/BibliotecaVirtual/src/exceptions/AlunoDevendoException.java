@@ -1,4 +1,4 @@
-package fachada;
+package exceptions;
 
 public class AlunoDevendoException extends Exception {
 	
