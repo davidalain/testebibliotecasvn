@@ -6,6 +6,11 @@ public class RepositorioEnderecos {
 	
 	private BancoDados bancoDados;
 	
+	public RepositorioEnderecos(BancoDados bancoDados) {
+		super();
+		this.bancoDados = bancoDados;
+	}
+
 	public void inserir (Endereco endereco){
 		bancoDados.inserir(endereco);
 		
