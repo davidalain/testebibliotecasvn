@@ -15,8 +15,9 @@ public class ControladorAluno {
 	public boolean validarSituacaoCadastral(Aluno aluno){
 		
 		if (repAlunos.buscar(aluno)== null){
-			al
+			return false;
 		}
+		return true;
 	}
 	
 	public boolean validarSituacaoFinanceira(Aluno aluno){
