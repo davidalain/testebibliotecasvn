@@ -1,21 +1,20 @@
-package basicas;
+package alunos;
+
 
 public class Aluno {
 
 	private String nome;
 	private String cpf;
 	private String senha;
-	private Endereco endereco;
 	private String telefone;
 	private double divida;
 	
-	public Aluno(String nome, String cpf, String senha, Endereco endereco,
+	public Aluno(String nome, String cpf, String senha,
 			String telefone, double divida) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.endereco = endereco;
 		this.telefone = telefone;
 		this.divida = divida;
 	}
@@ -36,12 +35,6 @@ public class Aluno {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public Endereco getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 	public String getTelefone() {
 		return telefone;

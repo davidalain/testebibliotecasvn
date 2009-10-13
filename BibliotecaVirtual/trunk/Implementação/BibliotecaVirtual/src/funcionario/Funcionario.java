@@ -1,4 +1,4 @@
-package basicas;
+package funcionario;
 
 public class Funcionario {
 	private String nome;

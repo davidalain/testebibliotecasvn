@@ -1,7 +1,5 @@
-package controlador;
+package exemplares;
 
-import repositorio.RepositorioExemplares;
-import basicas.Exemplar;
 
 public class ControladorExemplares {
 

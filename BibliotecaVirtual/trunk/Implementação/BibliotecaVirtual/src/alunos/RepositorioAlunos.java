@@ -1,6 +1,6 @@
-package repositorio;
+package alunos;
 
-import basicas.Aluno;
+import repositorio.BancoDados;
 
 public class RepositorioAlunos {
 
@@ -13,7 +13,6 @@ public class RepositorioAlunos {
 	
 	public void inserir (Aluno aluno){
 		bancoDados.inserir(aluno);
-		
 	}
 	
 	public void remover (Aluno aluno){

@@ -1,6 +1,6 @@
-package repositorio;
+package exemplares;
 
-import basicas.Exemplar;
+import repositorio.BancoDados;
 
 public class RepositorioExemplares {
 	private BancoDados bancoDados;

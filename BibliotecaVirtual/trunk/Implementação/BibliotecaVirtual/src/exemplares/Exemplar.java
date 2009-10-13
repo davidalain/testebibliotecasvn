@@ -1,4 +1,4 @@
-package basicas;
+package exemplares;
 
 public class Exemplar {
 	private String titulo;
