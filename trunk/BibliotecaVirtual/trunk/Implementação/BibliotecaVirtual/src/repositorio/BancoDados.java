@@ -1,8 +1,8 @@
 package repositorio;
 
-import exemplares.Exemplar;
-import funcionario.Funcionario;
-import alunos.Aluno;
+import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 
 public class BancoDados {
 	public void funcaoSemRetorno(String comando){
