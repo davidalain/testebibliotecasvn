@@ -1,4 +1,4 @@
-package exemplares;
+package br.com.bibliotecavirtual.lib.exemplares;
 
 
 public class ControladorExemplares {

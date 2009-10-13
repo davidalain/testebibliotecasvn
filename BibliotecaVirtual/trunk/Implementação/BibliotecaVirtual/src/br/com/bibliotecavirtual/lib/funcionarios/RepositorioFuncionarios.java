@@ -1,4 +1,4 @@
-package funcionario;
+package br.com.bibliotecavirtual.lib.funcionarios;
 
 import repositorio.BancoDados;
 

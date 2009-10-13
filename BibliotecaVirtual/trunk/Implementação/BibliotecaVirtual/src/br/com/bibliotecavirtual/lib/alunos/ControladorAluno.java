@@ -1,16 +1,29 @@
 package br.com.bibliotecavirtual.lib.alunos;
 
+import basicas.*;
+import repositorio.*;
 
-public class ControladorAluno 
-{
-	public ControladorAluno()
-	{
+public class ControladorAluno {
+	private RepositorioAlunos repAlunos;
+	
+	public ControladorAluno(RepositorioAlunos repAlunos) {
+		super();
+		this.repAlunos = repAlunos;
+	}
+
+	
+	public boolean validarSituacaoCadastral(Aluno aluno){
 		
+		if (repAlunos.buscar(aluno)== null){
+			return false;
+		}
+		return true;
 	}
 	
-	public void inserirAluno(Aluno a)
-	{
+	public boolean validarSituacaoFinanceira(Aluno aluno){
+		
+		return !(aluno.getDivida()>0);
 		
 	}
-	
+
 }

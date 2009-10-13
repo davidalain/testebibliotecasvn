@@ -1,12 +1,12 @@
 package controlador;
 
-import alunos.Aluno;
-import alunos.ControladorAluno;
+import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
+import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplares;
+import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import exceptions.AlunoDevendoException;
 import exceptions.AlunoNaoCadastradoException;
 import exceptions.ExemplarNaoDisponivelException;
-import exemplares.ControladorExemplares;
-import exemplares.Exemplar;
 
 public class ControladorAlugados {
 	ControladorAluno ctrlAluno;

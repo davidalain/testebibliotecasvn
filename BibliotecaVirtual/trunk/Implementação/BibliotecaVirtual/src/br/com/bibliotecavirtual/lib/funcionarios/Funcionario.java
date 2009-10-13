@@ -1,4 +1,4 @@
-package funcionario;
+package br.com.bibliotecavirtual.lib.funcionarios;
 
 public class Funcionario {
 	private String nome;

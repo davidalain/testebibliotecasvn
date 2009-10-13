@@ -1,4 +1,4 @@
-package alunos;
+package br.com.bibliotecavirtual.lib.alunos;
 
 import repositorio.BancoDados;
 
