@@ -8,4 +8,9 @@ public class ControladorAluno
 		
 	}
 	
+	public void inserirAluno(Aluno a)
+	{
+		
+	}
+	
 }
