@@ -7,17 +7,25 @@ public class Aluno {
 	private String cpf;
 	private String senha;
 	private String telefone;
-	private double divida;
+	private String email;
+	
 	
 	public Aluno(String nome, String cpf, String senha,
-			String telefone, double divida) {
+			String telefone, String email) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
 		this.telefone = telefone;
-		this.divida = divida;
+		this.email = email;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -41,12 +49,6 @@ public class Aluno {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-	public double getDivida() {
-		return divida;
-	}
-	public void setDivida(double divida) {
-		this.divida = divida;
 	}
 	
 	
