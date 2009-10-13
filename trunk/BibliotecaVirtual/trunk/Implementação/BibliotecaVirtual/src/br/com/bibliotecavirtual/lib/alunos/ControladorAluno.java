@@ -1,6 +1,5 @@
 package br.com.bibliotecavirtual.lib.alunos;
 
-import basicas.*;
 import repositorio.*;
 
 public class ControladorAluno {
