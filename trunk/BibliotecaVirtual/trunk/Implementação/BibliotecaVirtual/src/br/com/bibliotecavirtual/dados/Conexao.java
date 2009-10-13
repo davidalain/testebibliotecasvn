@@ -1,6 +1,7 @@
 package br.com.bibliotecavirtual.dados;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -63,13 +64,38 @@ public class Conexao
 		}
 	}
 	
-	public Statement criarStatement()
+	private Statement criarStatement()
 	{		
 		try
 		{
 			return  this._connection.createStatement();
 		}
 		catch(SQLException e)
+		{
+			throw new RuntimeException();
+		}
+	}
+	
+	public ResultSet executarQuery(String sql)
+	{
+		try
+		{
+			return this.criarStatement().executeQuery(sql);
+		}
+		catch (Exception e) 
+		{
+			throw new RuntimeException();
+		}
+	}
+	
+	
+	public int executarNonQuery(String sql)
+	{
+		try
+		{
+			return this.criarStatement().executeUpdate(sql);
+		}
+		catch (Exception e) 
 		{
 			throw new RuntimeException();
 		}
