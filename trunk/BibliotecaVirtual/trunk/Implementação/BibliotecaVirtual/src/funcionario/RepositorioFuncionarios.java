@@ -1,6 +1,6 @@
-package repositorio;
+package funcionario;
 
-import basicas.Funcionario;
+import repositorio.BancoDados;
 
 public class RepositorioFuncionarios {
 	private BancoDados bancoDados;

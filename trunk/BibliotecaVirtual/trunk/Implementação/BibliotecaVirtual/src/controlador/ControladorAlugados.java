@@ -1,10 +1,12 @@
 package controlador;
 
-import basicas.Aluno;
-import basicas.Exemplar;
+import alunos.Aluno;
+import alunos.ControladorAluno;
 import exceptions.AlunoDevendoException;
 import exceptions.AlunoNaoCadastradoException;
 import exceptions.ExemplarNaoDisponivelException;
+import exemplares.ControladorExemplares;
+import exemplares.Exemplar;
 
 public class ControladorAlugados {
 	ControladorAluno ctrlAluno;
