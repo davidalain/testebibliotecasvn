@@ -15,9 +15,9 @@ public class Conexao
 	
 	private String _serverName = "localhost";
 	
-	private String _instanceName = "biblioteca";
+	private String _instanceName = "sqlexpress";
 	
-	private String _dataBase = "sqlexpress";
+	private String _dataBase = "biblioteca";
 	
 	private Connection _connection;
 	
