@@ -8,7 +8,7 @@ public class RepositorioAlunos {
 
 	private Conexao conexao = new Conexao();
 
-	// coment
+	// comentARIO
 
 	public RepositorioAlunos() {
 		conexao = new Conexao();
