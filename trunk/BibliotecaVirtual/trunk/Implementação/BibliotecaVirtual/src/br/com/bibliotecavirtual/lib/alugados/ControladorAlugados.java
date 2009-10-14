@@ -1,4 +1,4 @@
-package controlador;
+package br.com.bibliotecavirtual.lib.alugados;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
