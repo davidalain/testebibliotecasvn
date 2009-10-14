@@ -18,8 +18,8 @@ public class RepositorioAlunos {
 		String matricula = aluno.getCpf();
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]"
-				+ "([ALU_ID],[ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_ST])"
-				+ "VALUES (1, '" + login + "','" + email + "','" + matricula
+				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_ST])"
+				+ "VALUES ('" + login + "','" + email + "','" + matricula
 				+ "','" + "'OK')";
 
 		conexao.abrirConexao();
