@@ -14,6 +14,18 @@ public class RepositorioAlunos {
 		conexao = new Conexao();
 	}
 
+	private void executarQuery(String sql) {
+		conexao.abrirConexao();
+		conexao.executarQuery(sql);
+		conexao.fecharConexao();
+	}
+
+	private void executarNon(String sql) {
+		conexao.abrirConexao();
+		conexao.executarNonQuery(sql);
+		conexao.fecharConexao();
+	}
+
 	public void inserir(Aluno aluno) {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
@@ -24,13 +36,16 @@ public class RepositorioAlunos {
 				+ " VALUES(' " + login + "','" + email + "','" + matricula
 				+ "'," + "'OK')";
 
-		conexao.abrirConexao();
-		conexao.executarNonQuery(sql);
-		conexao.fecharConexao();
+		this.executarNon(sql);
 	}
 
-	public void remover(Aluno a) {
+	public void remover(Aluno aluno) {
+		String matricula = aluno.getCpf();
 
+		String sql = "DELETE FROM [biblioteca].[dbo].[ALN_ALUNO]"
+				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+
+		this.executarNon(sql);
 	}
 
 	public void atualizar(Aluno a) {
