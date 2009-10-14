@@ -20,9 +20,7 @@ public class ControladorAluno {
 	}
 	
 	public boolean validarSituacaoFinanceira(Aluno aluno){
-		
-		return !(aluno.getDivida()>0);
-		
+		return true;
 	}
 
 }
