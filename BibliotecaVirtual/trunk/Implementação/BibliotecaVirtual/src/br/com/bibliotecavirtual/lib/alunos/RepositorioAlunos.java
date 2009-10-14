@@ -20,7 +20,7 @@ public class RepositorioAlunos {
 		conexao.fecharConexao();
 	}
 
-	private void executarNon(String sql) {
+	private void executarNonQuery(String sql) {
 		conexao.abrirConexao();
 		conexao.executarNonQuery(sql);
 		conexao.fecharConexao();
@@ -34,9 +34,9 @@ public class RepositorioAlunos {
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_ST])"
 				+ " VALUES(' " + login + "','" + email + "','" + matricula
-				+ "'," + "'OK')";
+				+ "')";
 
-		this.executarNon(sql);
+		this.executarNonQuery(sql);
 	}
 
 	public void remover(Aluno aluno) {
@@ -45,7 +45,7 @@ public class RepositorioAlunos {
 		String sql = "DELETE FROM [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
 
-		this.executarNon(sql);
+		this.executarNonQuery(sql);
 	}
 
 	public void atualizar(Aluno a) {
