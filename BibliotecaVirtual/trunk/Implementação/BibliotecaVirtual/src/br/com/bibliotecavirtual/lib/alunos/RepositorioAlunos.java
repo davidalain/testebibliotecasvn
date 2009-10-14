@@ -21,8 +21,8 @@ public class RepositorioAlunos {
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_ST])"
-				+ "VALUES ('" + login + "','" + email + "','" + matricula
-				+ "','" + "'OK')";
+				+ " VALUES(' " + login + "','" + email + "','" + matricula
+				+ "'," + "'OK')";
 
 		conexao.abrirConexao();
 		conexao.executarNonQuery(sql);
@@ -38,8 +38,6 @@ public class RepositorioAlunos {
 	}
 
 	public ResultSet buscar(String cpf) {
-
 		return null;
 	}
-
 }
