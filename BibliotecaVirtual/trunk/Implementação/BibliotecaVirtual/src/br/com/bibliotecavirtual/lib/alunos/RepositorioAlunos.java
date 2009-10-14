@@ -32,7 +32,7 @@ public class RepositorioAlunos {
 		String matricula = aluno.getCpf();
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]"
-				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_ST])"
+				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA])"
 				+ " VALUES(' " + login + "','" + email + "','" + matricula
 				+ "')";
 
