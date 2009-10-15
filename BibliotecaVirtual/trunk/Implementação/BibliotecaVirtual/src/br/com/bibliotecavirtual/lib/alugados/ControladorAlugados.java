@@ -1,15 +1,15 @@
 package br.com.bibliotecavirtual.lib.alugados;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
-import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
+import br.com.bibliotecavirtual.lib.alunos.AlunoDevendoException;
+import br.com.bibliotecavirtual.lib.alunos.AlunoNaoCadastradoException;
+import br.com.bibliotecavirtual.lib.alunos.ControladorAlunos;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplares;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
-import exceptions.AlunoDevendoException;
-import exceptions.AlunoNaoCadastradoException;
-import exceptions.ExemplarNaoDisponivelException;
+import br.com.bibliotecavirtual.lib.exemplares.ExemplarNaoDisponivelException;
 
 public class ControladorAlugados {
-	ControladorAluno ctrlAluno;
+	ControladorAlunos ctrlAluno;
 	ControladorExemplares ctrlExemplares;
 
 	public ControladorAlugados() {
@@ -27,5 +27,6 @@ public class ControladorAlugados {
 
 		if (!ctrlExemplares.existeExemplarDisponivel(exemplar))
 			throw new ExemplarNaoDisponivelException();
+
 	}
 }
