@@ -1,6 +1,7 @@
 package br.com.bibliotecavirtual.lib.alunos;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import br.com.bibliotecavirtual.dados.Conexao;
 
@@ -54,7 +55,8 @@ public class RepositorioAlunos {
 		this.executarNonQuery(sql);
 	}
 
-	public ResultSet buscar(Aluno aluno) {
+	public Aluno buscar(Aluno aluno) throws SQLException {
+		Aluno alunoRetorno = null;
 		String matricula = aluno.getCpf();
 		ResultSet retorno = null;
 
@@ -63,8 +65,14 @@ public class RepositorioAlunos {
 
 		conexao.abrirConexao();
 		retorno = conexao.executarQuery(sql);
-		conexao.fecharConexao();
+		if (retorno.next()){
+			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), 
+			retorno.getString("ALN_CD_MATRICULA"), 
+		retorno.getString("ALN_NM_SENHA"), retorno.getString("ALN_NM_EMAIL"));
 
-		return retorno;
+		}
+		conexao.fecharConexao();
+		
+		return alunoRetorno;
 	}
 }
