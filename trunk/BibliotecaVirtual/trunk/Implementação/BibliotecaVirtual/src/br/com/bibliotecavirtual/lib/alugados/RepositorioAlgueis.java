@@ -24,15 +24,18 @@ public class RepositorioAlgueis {
 	public void inserir(Aluguel aluguel) {
 		String idAluno = aluguel.getIdAluno();
 		String idFuncionario = aluguel.getIdFuncionario();
-		String idLivro = aluguel.getIdLivro();
+		String idExemplar = aluguel.getIdExemplar();
 		String dataAluguel = aluguel.getDataAluguel().toString();
 		String dataDevolucao = aluguel.getDataDevolucao().toString();
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALG_ALUGUEL]([EXP_ID],[ALN_ID],[FUN_ID],[ALG_DT],[ALG_DT_DEVOLUCAO])"
-     "VALUES(<EXP_ID, int,>,<ALN_ID, int,>
-           ,<FUN_ID, int,>
-           ,<ALG_DT, datetime,>
-           ,<ALG_DT_DEVOLUCAO, nvarchar(4000),>)";
+				+ "VALUES("
+				+ idAluno
+				+ ","
+				+ idFuncionario
+				+ ","
+				+ idExemplar
+				+ "," + dataAluguel + "," + dataDevolucao;
 
 		this.executarNonQuery(sql);
 	}
