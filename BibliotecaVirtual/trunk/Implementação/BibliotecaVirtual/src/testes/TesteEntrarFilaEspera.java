@@ -8,7 +8,7 @@ public class TesteEntrarFilaEspera extends TestCase {
 	
 	public void testEntrarFilaEspera()
 	{
-		ControladorFilaEspera cFilas = new ControladorFila();
+		ControladorElementosEspera cFilas = new ControladorFila();
 		Livro livro = new Livro();
 		Aluno alunoAlvo = new Aluno();
 		cFilas.inserirAluno(alunoAlvo, livro);
