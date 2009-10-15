@@ -49,20 +49,20 @@ public class RepositorioAlunos {
 
 		String sql = "UPDATE [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "SET [ALN_NM_LOGIN] = '" + login + "', [ALN_NM_EMAIL] = '"
-				+ email + "', [ALN_CD_MATRICULA] = '" + matricula
-				+ "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+				+ email + "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
 
 		this.executarNonQuery(sql);
 	}
 
 	public ResultSet buscar(Aluno aluno) {
 		String matricula = aluno.getCpf();
+		ResultSet retorno = null;
 
 		String sql = "SELECT [ALU_ID],[ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA] FROM [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
 
 		conexao.abrirConexao();
-		ResultSet retorno = conexao.executarQuery(sql);
+		retorno = conexao.executarQuery(sql);
 		conexao.fecharConexao();
 
 		return retorno;
