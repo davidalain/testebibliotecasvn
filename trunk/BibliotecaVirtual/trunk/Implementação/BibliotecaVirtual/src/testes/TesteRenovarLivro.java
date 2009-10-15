@@ -28,7 +28,7 @@ public class TesteRenovarLivro extends TestCase {
 	}
 	
 	public void testPossuiFilaEsperaVerdadeiro(){
-		ControladorFilaEspera cFilas = new ControladorFila();
+		ControladorElementosEspera cFilas = new ControladorFila();
 		Livro livroAlvo = new Livro();
 		Aluno alunoAlvo = new Aluno();
 		cFilas.criarLista(new List(alunoAlvo));
@@ -36,7 +36,7 @@ public class TesteRenovarLivro extends TestCase {
 	}
 	
 	public void testPossuiFilaEsperaFalso(){
-		ControladorFilaEspera cFilas = new ControladorFila();
+		ControladorElementosEspera cFilas = new ControladorFila();
 		Livro livroAlvo = new Livro();
 		cFilas.removerLista(livroAlvo);
 		assertTrue("Não existe lista de espera", possuiFilaEspera(livroAlvo)==0);
