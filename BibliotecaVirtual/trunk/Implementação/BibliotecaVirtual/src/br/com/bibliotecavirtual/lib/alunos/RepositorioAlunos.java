@@ -14,12 +14,6 @@ public class RepositorioAlunos {
 		conexao = new Conexao();
 	}
 
-	private void executarQuery(String sql) {
-		conexao.abrirConexao();
-		conexao.executarQuery(sql);
-		conexao.fecharConexao();
-	}
-
 	private void executarNonQuery(String sql) {
 		conexao.abrirConexao();
 		conexao.executarNonQuery(sql);
@@ -48,11 +42,29 @@ public class RepositorioAlunos {
 		this.executarNonQuery(sql);
 	}
 
-	public void atualizar(Aluno a) {
+	public void atualizar(Aluno aluno) {
+		String login = aluno.getNome();
+		String email = aluno.getEmail();
+		String matricula = aluno.getCpf();
 
+		String sql = "UPDATE [biblioteca].[dbo].[ALN_ALUNO]"
+				+ "SET [ALN_NM_LOGIN] = '" + login + "', [ALN_NM_EMAIL] = '"
+				+ email + "', [ALN_CD_MATRICULA] = '" + matricula
+				+ "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+
+		this.executarNonQuery(sql);
 	}
 
-	public ResultSet buscar(String cpf) {
-		return null;
+	public ResultSet buscar(Aluno aluno) {
+		String matricula = aluno.getCpf();
+
+		String sql = "SELECT [ALU_ID],[ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA] FROM [biblioteca].[dbo].[ALN_ALUNO]"
+				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+
+		conexao.abrirConexao();
+		ResultSet retorno = conexao.executarQuery(sql);
+		conexao.fecharConexao();
+
+		return retorno;
 	}
 }
