@@ -5,16 +5,13 @@ public class Aluno {
 	private String nome;
 	private String cpf;
 	private String senha;
-	private String telefone;
 	private String email;
-
-	public Aluno(String nome, String cpf, String senha, String telefone,
-			String email) {
+	
+	public Aluno(String nome, String cpf, String senha, String email) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.telefone = telefone;
 		this.email = email;
 	}
 
@@ -50,12 +47,5 @@ public class Aluno {
 		this.senha = senha;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
 
 }
