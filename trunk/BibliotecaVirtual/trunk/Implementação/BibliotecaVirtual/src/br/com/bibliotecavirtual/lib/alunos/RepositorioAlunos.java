@@ -25,11 +25,12 @@ public class RepositorioAlunos {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
 		String matricula = aluno.getCpf();
+		String senha = aluno.getSenha();
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]"
-				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA])"
+				+ "([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA],[ALN_NM_SENHA])"
 				+ " VALUES(' " + login + "','" + email + "','" + matricula
-				+ "')";
+				+ "','" + senha + "')";
 
 		this.executarNonQuery(sql);
 	}
@@ -47,10 +48,12 @@ public class RepositorioAlunos {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
 		String matricula = aluno.getCpf();
+		String senha = aluno.getSenha();
 
 		String sql = "UPDATE [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "SET [ALN_NM_LOGIN] = '" + login + "', [ALN_NM_EMAIL] = '"
-				+ email + "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+				+ email + "', [ALN_NM_SENHA] = '" + senha
+				+ "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
 
 		this.executarNonQuery(sql);
 	}
@@ -65,14 +68,15 @@ public class RepositorioAlunos {
 
 		conexao.abrirConexao();
 		retorno = conexao.executarQuery(sql);
-		if (retorno.next()){
-			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), 
-			retorno.getString("ALN_CD_MATRICULA"), 
-		retorno.getString("ALN_NM_SENHA"), retorno.getString("ALN_NM_EMAIL"));
+		if (retorno.next()) {
+			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
+					.getString("ALN_CD_MATRICULA"), retorno
+					.getString("ALN_NM_SENHA"), retorno
+					.getString("ALN_NM_EMAIL"));
 
 		}
 		conexao.fecharConexao();
-		
+
 		return alunoRetorno;
 	}
 }
