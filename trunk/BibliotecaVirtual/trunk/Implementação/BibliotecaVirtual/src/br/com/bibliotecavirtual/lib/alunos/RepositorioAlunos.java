@@ -58,7 +58,7 @@ public class RepositorioAlunos {
 		String matricula = aluno.getCpf();
 		ResultSet retorno = null;
 
-		String sql = "SELECT [ALU_ID],[ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA] FROM [biblioteca].[dbo].[ALN_ALUNO]"
+		String sql = "SELECT * FROM [biblioteca].[dbo].[ALN_ALUNO]"
 				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
 
 		conexao.abrirConexao();
