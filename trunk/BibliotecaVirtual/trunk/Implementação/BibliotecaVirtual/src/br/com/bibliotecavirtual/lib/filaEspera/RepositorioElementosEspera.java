@@ -1,7 +1,6 @@
 package br.com.bibliotecavirtual.lib.filaEspera;
 
 import java.sql.ResultSet;
-import java.util.Date;
 
 import br.com.bibliotecavirtual.dados.Conexao;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
@@ -21,35 +20,35 @@ public class RepositorioElementosEspera {
 		conexao.fecharConexao();
 	}
 
-	public void inserir(FilaEspera fila) {
-		String alunoId = fila.getAlunoId();
-		Date data = fila.getData();
-		String livroId = fila.getLivroId();
+	public void inserir(ElementoEspera elemento) {
+		String alunoId = elemento.getAlunoId();
+		String data = elemento.getData().toString();
+		String livroId = elemento.getLivroId();
 
 		String sql = "INSERT INTO [biblioteca].[dbo].[FIL_FILA_ESPERA]"
-				+ "([LIV_ID],[ALN_ID],[FIL_DT])" + "VALUES( '" + livroId
-				+ "', '" + alunoId + "', '" + data.toString() + "'";
+				+ "([LIV_ID],[ALN_ID],[FIL_DT_DATA])" + "VALUES( '" + livroId
+				+ "', '" + alunoId + "', '" + data + "')";
 
 		this.executarNonQuery(sql);
 	}
 
-	public void remover(Aluno aluno) {
-		String matricula = aluno.getCpf();
+	public void remover(ElementoEspera elemento) {
+		String idLivro = elemento.getLivroId();
 
-		String sql = "DELETE FROM [biblioteca].[dbo].[ALN_ALUNO]"
-				+ "WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+		String sql = "DELETE FROM [biblioteca].[dbo].[FIL_FILA_ESPERA]"
+				+ "WHERE LIV_ID = '" + idLivro + "' ";
 
 		this.executarNonQuery(sql);
 	}
 
-	public void atualizar(Aluno aluno) {
-		String login = aluno.getNome();
-		String email = aluno.getEmail();
-		String matricula = aluno.getCpf();
+	public void atualizar(ElementoEspera elemento) {
+		String alunoId = elemento.getAlunoId();
+		String data = elemento.getData().toString();
+		String livroId = elemento.getLivroId();
 
-		String sql = "UPDATE [biblioteca].[dbo].[ALN_ALUNO]"
-				+ "SET [ALN_NM_LOGIN] = '" + login + "', [ALN_NM_EMAIL] = '"
-				+ email + "' WHERE ALN_CD_MATRICULA = '" + matricula + "' ";
+		String sql = "UPDATE [biblioteca].[dbo].[FIL_FILA_ESPERA]"
+				+ "SET [ALN_ID] = '" + alunoId + "', [FIL_DT_DATA] = '" + data
+				+ "' WHERE LIV_ID = '" + livroId + "' ";
 
 		this.executarNonQuery(sql);
 	}
