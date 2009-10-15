@@ -39,7 +39,7 @@ public class RepositorioExemplares {
 		this.executarNonQuery(sql);
 	}
 
-	public ResultSet buscar(Exemplar exemplar) {
+	public Exemplar buscar(Exemplar exemplar) {
 		ResultSet retorno = null;
 
 		String sql = "";
@@ -47,7 +47,6 @@ public class RepositorioExemplares {
 		conexao.abrirConexao();
 		retorno = conexao.executarQuery(sql);
 		conexao.fecharConexao();
-
 		return retorno;
 	}
 
