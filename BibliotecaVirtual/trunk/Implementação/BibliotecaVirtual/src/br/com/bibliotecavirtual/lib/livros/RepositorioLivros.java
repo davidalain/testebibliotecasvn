@@ -1,4 +1,4 @@
-package bir.com.bibliotecavirtual.lib.livros;
+package br.com.bibliotecavirtual.lib.livros;
 
 import java.sql.ResultSet;
 
