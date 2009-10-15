@@ -1,6 +1,5 @@
 package br.com.bibliotecavirtual.lib.exemplares;
 
-
 public class ControladorExemplares {
 
 	private RepositorioExemplares repExemplares;

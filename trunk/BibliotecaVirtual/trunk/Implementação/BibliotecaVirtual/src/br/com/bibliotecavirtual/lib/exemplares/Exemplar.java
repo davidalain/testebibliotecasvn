@@ -1,9 +1,31 @@
 package br.com.bibliotecavirtual.lib.exemplares;
 
-import bir.com.bibliotecavirtual.lib.livros.Livro;
+public class Exemplar {
+	public Exemplar(int idExemplar, String isbn, String estado) {
+		this.idExemplar = idExemplar;
+		this.isbn = isbn;
+		this.estado = estado;
+	}
 
-public class Exemplar extends Livro {
 	private int idExemplar;
+	private String isbn;
+	private String estado;
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 
 	public void setIdExemplar(int idExemplar) {
 		this.idExemplar = idExemplar;
