@@ -1,0 +1,103 @@
+package br.com.bibliotecavirtual.lib.alunos;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.bibliotecavirtual.lib.comum.DAOFactory;
+import br.com.bibliotecavirtual.lib.comum.IConexao;
+import br.com.bibliotecavirtual.lib.sqlserver.Conexao;
+
+public class AlunoDAO implements IAlunoDAO{
+
+	private static final String INSERIR = "inserir";
+	private static final String REMOVER = "remover";
+	private static final String ATUALIZAR = "atualizar";
+	private static final String BUSCAR = "buscar";
+	private static final String CAMINHO = "Alunos.xml";
+
+	private IConexao conexao ;
+
+	// comentARIO
+
+	public AlunoDAO()  
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+	
+		conexao = factory.getConexao();
+	}
+
+
+
+	public Aluno buscar(Aluno aluno) throws SQLException {
+		
+	}
+
+	public void atualizarAluno(Aluno aluno) throws SQLException {
+		String login = aluno.getNome();
+		String email = aluno.getEmail();
+		String matricula = aluno.getCpf();
+		String senha = aluno.getSenha();
+		
+		ArrayList<Object> parametros = new ArrayList<Object>();
+
+		parametros.add(login);
+		parametros.add(email);
+		parametros.add(matricula);
+
+		this.conexao.executeNonQuery(CAMINHO, AlunoDAO.ATUALIZAR, parametros);
+		
+	}
+
+	public void inserirAluno(Aluno aluno) throws SQLException {
+		String login = aluno.getNome();
+		String email = aluno.getEmail();
+		String matricula = aluno.getCpf();
+		
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		parametros.add(login);
+		parametros.add(email);
+		parametros.add(matricula);
+		
+		conexao.executeNonQuery(CAMINHO, AlunoDAO.INSERIR, parametros);
+		
+	}
+
+	public Aluno obterAlunoPorID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Aluno obterAlunoPorMatricula(String matricula) 
+	{
+		
+		ResultSet retorno = null;
+
+
+		buscaStmt.setString(1, matricula);
+
+		retorno = buscaStmt.executeQuery();
+
+		if (retorno.next()) {
+			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
+					.getString("ALN_CD_MATRICULA"), retorno
+					.getString("ALN_NM_SENHA"), retorno
+					.getString("ALN_NM_EMAIL"));
+
+		}
+		this.conexao.fecharConexao();
+
+		return alunoRetorno;
+	}
+
+	public void removerAluno(int id) 
+	{
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		parametros.add(id);
+		
+		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER, parametros)
+	}
+
+}
