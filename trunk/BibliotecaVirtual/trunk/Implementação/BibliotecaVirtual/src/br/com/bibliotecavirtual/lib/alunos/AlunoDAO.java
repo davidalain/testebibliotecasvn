@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
-import br.com.bibliotecavirtual.lib.sqlserver.Conexao;
 
 public class AlunoDAO implements IAlunoDAO{
 
@@ -27,17 +26,10 @@ public class AlunoDAO implements IAlunoDAO{
 		conexao = factory.getConexao();
 	}
 
-
-
-	public Aluno buscar(Aluno aluno) throws SQLException {
-		
-	}
-
 	public void atualizarAluno(Aluno aluno) throws SQLException {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
 		String matricula = aluno.getCpf();
-		String senha = aluno.getSenha();
 		
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
@@ -69,35 +61,38 @@ public class AlunoDAO implements IAlunoDAO{
 		return null;
 	}
 
-	public Aluno obterAlunoPorMatricula(String matricula) 
+	public Aluno obterAlunoPorMatricula(String matricula) throws SQLException 
 	{
+		
+		Aluno alunoRetorno = null;
 		
 		ResultSet retorno = null;
 
+		ArrayList<Object> parametros = new ArrayList<Object>();
 
-		buscaStmt.setString(1, matricula);
+		parametros.add(matricula);
+		
+		retorno = conexao.executeQuery(CAMINHO, BUSCAR, parametros);
 
-		retorno = buscaStmt.executeQuery();
-
-		if (retorno.next()) {
+		if (retorno.next()) 
+		{
 			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
 					.getString("ALN_CD_MATRICULA"), retorno
 					.getString("ALN_NM_SENHA"), retorno
 					.getString("ALN_NM_EMAIL"));
 
 		}
-		this.conexao.fecharConexao();
 
 		return alunoRetorno;
 	}
 
-	public void removerAluno(int id) 
+	public void removerAluno(int id) throws SQLException 
 	{
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		
 		parametros.add(id);
 		
-		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER, parametros)
+		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER, parametros);
 	}
 
 }
