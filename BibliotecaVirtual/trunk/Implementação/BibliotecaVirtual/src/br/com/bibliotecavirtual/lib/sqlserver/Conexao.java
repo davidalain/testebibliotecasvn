@@ -18,7 +18,9 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 public class Conexao implements IConexao {
 	private static Conexao instance;
 
-	private Properties props = new Properties();
+	private Properties configuracao;
+
+	private Properties mapeamento;
 
 	private Connection _connection;
 
@@ -27,7 +29,13 @@ public class Conexao implements IConexao {
 	private Conexao() {
 
 		try {
-			this.props.load(new FileInputStream("aplicacao.properties"));
+			this.configuracao = new Properties();
+			this.configuracao.load(new FileInputStream(
+					"configuracao.properties"));
+
+			this.mapeamento = new Properties();
+			this.mapeamento.load(new FileInputStream(this.configuracao
+					.getProperty("mapeamentoXml")));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,24 +46,28 @@ public class Conexao implements IConexao {
 
 		this._dataSource = new SQLServerDataSource();
 
-		this._dataSource.setUser(props.getProperty("BD_user"));
+		this._dataSource.setUser(configuracao.getProperty("BD_user"));
 
-		this._dataSource.setPassword(props.getProperty("BD_password"));
+		this._dataSource.setPassword(configuracao.getProperty("BD_password"));
 
-		this._dataSource.setServerName(props.getProperty("BD_serverName"));
+		this._dataSource.setServerName(configuracao
+				.getProperty("BD_serverName"));
 
-		this._dataSource.setDatabaseName(props.getProperty("BD_dataBase"));
+		this._dataSource.setDatabaseName(configuracao
+				.getProperty("BD_dataBase"));
 
-		this._dataSource.setInstanceName(props.getProperty("BD_instanceName"));
+		this._dataSource.setInstanceName(configuracao
+				.getProperty("BD_instanceName"));
 
 		this._connection = null;
 	}
 
-	public void executeNonQuery(String caminho, String chave,
+	public void executeNonQuery(String mapeamento, String chave,
 			ArrayList<Object> parametros) throws SQLException {
 		Properties prop = new Properties();
 
 		try {
+			String caminho = this.mapeamento.getProperty(mapeamento);
 			prop.loadFromXML(new FileInputStream(caminho));
 		} catch (InvalidPropertiesFormatException e) {
 			// TODO Auto-generated catch block
@@ -69,7 +81,7 @@ public class Conexao implements IConexao {
 		}
 
 		String consulta = prop.getProperty(chave);
-		
+
 		this.abrirConexao();
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);
@@ -88,11 +100,12 @@ public class Conexao implements IConexao {
 
 	}
 
-	public ResultSet executeQuery(String caminho, String chave,
+	public ResultSet executeQuery(String mapeamento, String chave,
 			ArrayList<Object> parametros) throws SQLException {
 		Properties prop = new Properties();
 
 		try {
+			String caminho = this.mapeamento.getProperty(mapeamento);
 			prop.loadFromXML(new FileInputStream(caminho));
 		} catch (InvalidPropertiesFormatException e) {
 			// TODO Auto-generated catch block
@@ -115,7 +128,7 @@ public class Conexao implements IConexao {
 			indice++;
 		}
 
-		abrirConexao();
+		this.abrirConexao();
 
 		ResultSet retorno = comando.executeQuery();
 
