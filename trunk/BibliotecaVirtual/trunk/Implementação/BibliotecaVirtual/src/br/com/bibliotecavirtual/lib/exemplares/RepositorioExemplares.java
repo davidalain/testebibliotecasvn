@@ -2,7 +2,7 @@ package br.com.bibliotecavirtual.lib.exemplares;
 
 import java.sql.ResultSet;
 
-import br.com.bibliotecavirtual.dados.Conexao;
+import br.com.bibliotecavirtual.lib.sqlserver.Conexao;
 
 public class RepositorioExemplares {
 	private Conexao conexao = new Conexao();

@@ -3,8 +3,8 @@ package br.com.bibliotecavirtual.lib.alugados;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.bibliotecavirtual.dados.Conexao;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.sqlserver.Conexao;
 
 public class RepositorioAlgueis {
 	private Conexao conexao = new Conexao();
