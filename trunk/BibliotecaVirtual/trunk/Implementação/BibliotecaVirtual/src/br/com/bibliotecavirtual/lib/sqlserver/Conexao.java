@@ -69,10 +69,12 @@ public class Conexao implements IConexao {
 		}
 
 		String consulta = prop.getProperty(chave);
+		
+		this.abrirConexao();
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);
 
-		int indice = 0;
+		int indice = 1;
 		for (Object o : parametros) {
 			comando.setObject(indice, o);
 			indice++;
@@ -107,7 +109,7 @@ public class Conexao implements IConexao {
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);
 
-		int indice = 0;
+		int indice = 1;
 		for (Object o : parametros) {
 			comando.setObject(indice, o);
 			indice++;

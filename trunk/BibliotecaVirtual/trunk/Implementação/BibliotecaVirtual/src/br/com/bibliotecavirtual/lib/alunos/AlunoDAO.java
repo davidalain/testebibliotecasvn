@@ -13,7 +13,7 @@ public class AlunoDAO implements IAlunoDAO{
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCAR = "buscar";
-	private static final String CAMINHO = "Alunos.xml";
+	private static final String CAMINHO = "src\\br\\com\\bibliotecavirtual\\lib\\alunos\\alunos.xml";
 
 	private IConexao conexao ;
 
