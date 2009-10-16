@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>  
+  <entry key="insert">INSERT INTO [biblioteca].[dbo].[LIV_LIVRO]([LIV_NM_TITULO],[LIV_NM_AUTOR],[LIV_SC_AREA],[LIV_NU_ANO],[LIV_DS_RESUMO]) VALUES (?,?,?,?,?)</entry>
+  <entry key="deleteByISBN">DELETE FROM [biblioteca].[dbo].[LIV_LIVRO] WHERE LIV_NM_ISBN = ?</entry> 
+  <entry key="update">UPDATE [biblioteca].[dbo].[LIV_LIVRO] SET [LIV_NM_TITULO] = ? ,[LIV_NM_AUTOR] = ? ,[LIV_SC_AREA] = ? ,[LIV_NU_ANO] = ?,[LIV_DS_RESUMO] = ? WHERE LIV_NM_ISBN = ?</entry> 
+  <entry key="buscar">SELECT * FROM [biblioteca].[dbo].[LIV_LIVRO] WHERE LIV_NM_ISBN = ?</entry> 
+  </properties>
