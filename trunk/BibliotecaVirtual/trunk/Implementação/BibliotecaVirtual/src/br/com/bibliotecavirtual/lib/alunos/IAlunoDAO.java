@@ -12,6 +12,8 @@ public interface IAlunoDAO
 	
 	public void removerAluno(int id) throws SQLException;
 	
+	public void removerAluno(String matricula) throws SQLException;
+	
 	public void inserirAluno(Aluno a) throws SQLException;
 	
 
