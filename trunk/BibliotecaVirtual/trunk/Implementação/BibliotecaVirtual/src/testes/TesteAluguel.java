@@ -1,5 +1,6 @@
 package testes;
 
+import fachada.Fachada;
 import junit.framework.TestCase;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
@@ -10,12 +11,12 @@ public class TesteAluguel extends TestCase
 		
 		Aluno alunoAlvo = new Aluno("Diego", "07178992417", "diegompin@gmail.com" );
 		
-		ControladorAluno controlador = new ControladorAluno();
+		Fachada fachada = Fachada.getInstance();
 
 		try {
-			controlador.cadastrarAluno(alunoAlvo);
+			fachada.cadastrarAluno(alunoAlvo);
 			
-			assertTrue(controlador.validarSituacaoCadastral(alunoAlvo.getCpf()));
+			assertTrue(fachada.validarSituacaoCadastralAluno(alunoAlvo.getCpf()));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
