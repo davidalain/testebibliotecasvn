@@ -1,0 +1,9 @@
+  <?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+  <!DOCTYPE properties (View Source for full doctype...)> 
+- <properties version="1.0">
+  <comment>no</comment> 
+  <entry key="aluno.insert">INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA]) VALUES(?,?,?)</entry>
+  <entry key="aluno.deleteByMatricula">DELETE FROM [biblioteca].[dbo].[ALN_ALUNO] WHERE ALN_CD_MATRICULA = ?</entry> 
+  <entry key="aluno.update">UPDATE [biblioteca].[dbo].[ALN_ALUNO] SET [ALN_NM_LOGIN] = ?, [ALN_NM_EMAIL] = ?, [ALN_NM_SENHA] = ? WHERE ALN_CD_MATRICULA = ?</entry> 
+  <entry key="aluno.buscar">SELECT * FROM [biblioteca].[dbo].[ALN_ALUNO] WHERE ALN_CD_MATRICULA = ?</entry> 
+  </properties>
