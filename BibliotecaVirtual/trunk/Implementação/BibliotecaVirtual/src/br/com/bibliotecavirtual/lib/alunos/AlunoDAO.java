@@ -26,7 +26,7 @@ public class AlunoDAO implements IAlunoDAO {
 
 	}
 
-	public void atualizarAluno(Aluno aluno) throws SQLException {
+	public void atualizar(Aluno aluno) throws SQLException {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
 		String matricula = aluno.getCpf();
@@ -42,7 +42,7 @@ public class AlunoDAO implements IAlunoDAO {
 
 	}
 
-	public void inserirAluno(Aluno aluno) throws SQLException {
+	public void inserir(Aluno aluno) throws SQLException {
 		String login = aluno.getNome();
 		String email = aluno.getEmail();
 		String matricula = aluno.getCpf();
@@ -57,12 +57,12 @@ public class AlunoDAO implements IAlunoDAO {
 
 	}
 
-	public Aluno buscarAlunoPorID(int id) {
+	public Aluno buscarPorID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Aluno buscarAlunoPorMatricula(String matricula) throws SQLException {
+	public Aluno buscarPorMatricula(String matricula) throws SQLException {
 
 		Aluno alunoRetorno = null;
 
@@ -84,7 +84,7 @@ public class AlunoDAO implements IAlunoDAO {
 		return alunoRetorno;
 	}
 
-	public void removerAluno(int id) throws SQLException {
+	public void remover(int id) throws SQLException {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
 		parametros.add(id);
@@ -92,8 +92,8 @@ public class AlunoDAO implements IAlunoDAO {
 		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.REMOVER, parametros);
 	}
 
-	public boolean existeAluno(String matricula) throws SQLException {
-		return this.buscarAlunoPorMatricula(matricula) != null;
+	public boolean existe(String matricula) throws SQLException {
+		return this.buscarPorMatricula(matricula) != null;
 	}
 
 	public void removerAluno(String matricula) throws SQLException {
@@ -106,6 +106,11 @@ public class AlunoDAO implements IAlunoDAO {
 				parametros);
 		// TODO Auto-generated method stub
 
+	}
+
+	public void remover(String matricula) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
