@@ -5,24 +5,24 @@ import java.sql.SQLException;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 
 public class ControladorAluno {
-	private IAlunoDAO repositorio;
+	private IAlunoDAO repositorioAluno;
 
 	public ControladorAluno() 
 	{
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		
-		this.repositorio = factory.getAlunoDAO();
+		this.repositorioAluno = factory.getAlunoDAO();
 	}
 
 	public boolean validarSituacaoCadastral(String matricula) throws SQLException 
 	{
 		
-		return this.repositorio.existeAluno(matricula);
+		return this.repositorioAluno.existe(matricula);
 	}
 	
 	public void cadastrarAluno(Aluno a) throws SQLException
 	{
-		this.repositorio.inserirAluno(a);
+		this.repositorioAluno.inserir(a);
 	}
 
 	public boolean validarSituacaoFinanceira(Aluno aluno) {
