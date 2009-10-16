@@ -5,15 +5,13 @@ public class Aluno {
 	private int id;
 	private String nome;
 	private String cpf;
-	private String senha;
 	private String email;
 	
-	public Aluno(String nome, String cpf, String senha, String email) {
+	public Aluno(String nome, String cpf, String email) {
 		super();
 		
 		this.nome = nome;
 		this.cpf = cpf;
-		this.senha = senha;
 		this.email = email;
 	}
 	
@@ -22,7 +20,6 @@ public class Aluno {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.senha = senha;
 		this.email = email;
 	}
 	
@@ -49,14 +46,6 @@ public class Aluno {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 

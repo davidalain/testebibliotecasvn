@@ -56,12 +56,12 @@ public class AlunoDAO implements IAlunoDAO{
 
 	}
 
-	public Aluno obterAlunoPorID(int id) {
+	public Aluno buscarAlunoPorID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Aluno obterAlunoPorMatricula(String matricula) throws SQLException 
+	public Aluno buscarAlunoPorMatricula(String matricula) throws SQLException 
 	{
 
 		Aluno alunoRetorno = null;
@@ -78,7 +78,6 @@ public class AlunoDAO implements IAlunoDAO{
 		{
 			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
 					.getString("ALN_CD_MATRICULA"), retorno
-					.getString("ALN_NM_SENHA"), retorno
 					.getString("ALN_NM_EMAIL"));
 
 		}
@@ -95,6 +94,11 @@ public class AlunoDAO implements IAlunoDAO{
 		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER, parametros);
 	}
 
+
+	public boolean existeAluno(String matricula) throws SQLException {
+		return this.buscarAlunoPorMatricula(matricula) != null;
+	}
+
 	public void removerAluno(String matricula) throws SQLException {
 		
 		ArrayList<Object> parametros = new ArrayList<Object>();
@@ -105,5 +109,16 @@ public class AlunoDAO implements IAlunoDAO{
 		// TODO Auto-generated method stub
 
 	}
+
+	public Aluno obterAlunoPorID(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Aluno obterAlunoPorMatricula(String matricula) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
