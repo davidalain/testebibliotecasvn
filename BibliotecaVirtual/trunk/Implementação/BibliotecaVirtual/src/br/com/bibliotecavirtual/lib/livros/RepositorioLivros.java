@@ -3,7 +3,7 @@ package br.com.bibliotecavirtual.lib.livros;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.bibliotecavirtual.dados.Conexao;
+import br.com.bibliotecavirtual.lib.sqlserver.Conexao;
 
 public class RepositorioLivros {
 	private Conexao conexao = new Conexao();
