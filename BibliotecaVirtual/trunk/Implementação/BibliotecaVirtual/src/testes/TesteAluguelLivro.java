@@ -3,6 +3,7 @@ package testes;
 import junit.framework.TestCase;
 import bir.com.bibliotecavirtual.lib.livros.Livro;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
 
 public class TesteAluguelLivro extends TestCase {
 	private MockControladorExemplar controladorExemplaresVazio = new MockControladorExemplar();
@@ -101,12 +102,18 @@ public class TesteAluguelLivro extends TestCase {
 	}
 
 	public void testSituacaoCadastralOK() {
-		String nome = "Aluno";
-		Aluno alunoAlvo = new Aluno(nome);
-		MockControlador control = new MockControlador();
-		control.add(alunoAlvo);
+		
+		Aluno alunoAlvo = new Aluno("Diego", "07178992417", "diegompin@gmail.com" );
+		
+		ControladorAluno controlador = new ControladorAluno();
 
-		assertTrue(control.validarSituacaoCadastral(alunoAlvo));
+		try {
+			controlador.cadastrarAluno(alunoAlvo);
+			
+			assertTrue(controlador.validarSituacaoCadastral(alunoAlvo.getCpf()));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	public void testSituacaoCadastralInvalida() {
