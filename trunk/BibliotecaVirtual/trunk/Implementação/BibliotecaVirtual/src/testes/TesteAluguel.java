@@ -18,7 +18,7 @@ public class TesteAluguel extends TestCase
 			
 			assertTrue(fachada.validarSituacaoCadastralAluno(alunoAlvo.getCpf()));
 		} catch (Exception e) {
-			// TODO: handle exception
+			new AssertionError();
 		}
 	}
 
