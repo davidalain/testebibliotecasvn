@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties><comment>no</comment> 
   <entry key="insert">INSERT INTO [biblioteca].[dbo].[ALN_ALUNO]([ALN_NM_LOGIN],[ALN_NM_EMAIL],[ALN_CD_MATRICULA]) VALUES(?,?,?)</entry>
-  <entry key="deleteByMatricula">DELETE FROM [biblioteca].[dbo].[ALN_ALUNO] WHERE ALN_CD_MATRICULA = ?</entry> 
+  <entry key="delete">DELETE FROM [biblioteca].[dbo].[ALN_ALUNO] WHERE ALU_ID = ?</entry> 
   <entry key="update">UPDATE [biblioteca].[dbo].[ALN_ALUNO] SET [ALN_NM_LOGIN] = ?, [ALN_NM_EMAIL] = ? WHERE ALN_CD_MATRICULA = ?</entry> 
   <entry key="buscar">SELECT * FROM [biblioteca].[dbo].[ALN_ALUNO] WHERE ALN_CD_MATRICULA = ?</entry> 
   </properties>
