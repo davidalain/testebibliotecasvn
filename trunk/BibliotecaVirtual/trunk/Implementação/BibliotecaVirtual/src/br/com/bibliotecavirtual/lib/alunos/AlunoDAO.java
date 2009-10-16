@@ -7,23 +7,23 @@ import java.util.ArrayList;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 
-public class AlunoDAO implements IAlunoDAO{
+public class AlunoDAO implements IAlunoDAO {
 
 	private static final String INSERIR = "inserir";
 	private static final String REMOVER = "removerPorID";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCAR = "buscar";
-	private static final String CAMINHO = "src\\br\\com\\bibliotecavirtual\\lib\\alunos\\alunos.xml";
+	private static final String MAPEAMENTO = Aluno.class.getName();
 	private static final String REMOVER_POR_MATRICULA = "removerPorMatricula";
-	private IConexao conexao ;
+	private IConexao conexao;
 
 	// comentARIO
 
-	public AlunoDAO()  
-	{
+	public AlunoDAO() {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 
 		conexao = factory.getConexao();
+
 	}
 
 	public void atualizarAluno(Aluno aluno) throws SQLException {
@@ -37,7 +37,8 @@ public class AlunoDAO implements IAlunoDAO{
 		parametros.add(email);
 		parametros.add(matricula);
 
-		this.conexao.executeNonQuery(CAMINHO, AlunoDAO.ATUALIZAR, parametros);
+		this.conexao
+				.executeNonQuery(MAPEAMENTO, AlunoDAO.ATUALIZAR, parametros);
 
 	}
 
@@ -52,7 +53,7 @@ public class AlunoDAO implements IAlunoDAO{
 		parametros.add(email);
 		parametros.add(matricula);
 
-		conexao.executeNonQuery(CAMINHO, AlunoDAO.INSERIR, parametros);
+		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.INSERIR, parametros);
 
 	}
 
@@ -61,8 +62,7 @@ public class AlunoDAO implements IAlunoDAO{
 		return null;
 	}
 
-	public Aluno buscarAlunoPorMatricula(String matricula) throws SQLException 
-	{
+	public Aluno buscarAlunoPorMatricula(String matricula) throws SQLException {
 
 		Aluno alunoRetorno = null;
 
@@ -72,10 +72,9 @@ public class AlunoDAO implements IAlunoDAO{
 
 		parametros.add(matricula);
 
-		retorno = conexao.executeQuery(CAMINHO, BUSCAR, parametros);
+		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
 
-		if (retorno.next()) 
-		{
+		if (retorno.next()) {
 			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
 					.getString("ALN_CD_MATRICULA"), retorno
 					.getString("ALN_NM_EMAIL"));
@@ -85,30 +84,28 @@ public class AlunoDAO implements IAlunoDAO{
 		return alunoRetorno;
 	}
 
-	public void removerAluno(int id) throws SQLException 
-	{
+	public void removerAluno(int id) throws SQLException {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
 		parametros.add(id);
 
-		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER, parametros);
+		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.REMOVER, parametros);
 	}
-
 
 	public boolean existeAluno(String matricula) throws SQLException {
 		return this.buscarAlunoPorMatricula(matricula) != null;
 	}
 
 	public void removerAluno(String matricula) throws SQLException {
-		
+
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
 		parametros.add(matricula);
 
-		conexao.executeNonQuery(CAMINHO, AlunoDAO.REMOVER_POR_MATRICULA, parametros);
+		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.REMOVER_POR_MATRICULA,
+				parametros);
 		// TODO Auto-generated method stub
 
 	}
-
 
 }
