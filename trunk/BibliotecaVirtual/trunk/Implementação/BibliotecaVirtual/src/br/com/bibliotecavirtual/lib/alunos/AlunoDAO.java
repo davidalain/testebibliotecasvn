@@ -110,15 +110,5 @@ public class AlunoDAO implements IAlunoDAO{
 
 	}
 
-	public Aluno obterAlunoPorID(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Aluno obterAlunoPorMatricula(String matricula) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }
