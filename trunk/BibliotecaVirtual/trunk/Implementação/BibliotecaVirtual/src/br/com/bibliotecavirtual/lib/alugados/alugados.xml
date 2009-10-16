@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties><comment>no</comment> 
+  <entry key="inserir">INSERT INTO [biblioteca].[dbo].[ALG_ALUGUEL]([EXP_ID],[ALN_ID],[FUN_ID],[ALG_DT],[ALG_DT_DEVOLUCAO])VALUES(?,?,?,?,?)</entry>
+  <entry key="remover">DELETE FROM [biblioteca].[dbo].[ALG_ALUGUEL] WHERE ALG_ID = ?</entry> 
+  <entry key="atualizar">UPDATE [biblioteca].[dbo].[ALG_ALUGUEL] SET [EXP_ID] = ?,[ALN_ID] = ?,[FUN_ID] = ?,[ALG_DT] = ?,[ALG_DT_DEVOLUCAO] = ? WHERE ALG_ID = ?</entry> 
+  <entry key="buscar">SELECT * FROM [biblioteca].[dbo].[ALG_ALUGUEL] WHERE ALG_ID = ?</entry> 
+  </properties>
