@@ -11,10 +11,11 @@ import br.com.bibliotecavirtual.lib.sqlserver.SqlServerDAOFactory;
 		 
 		  public abstract IConexao getConexao();
 		  
-		  public abstract IAlunoDAO getCustomerDAO();
+		  public abstract IAlunoDAO getAlunoDAO();
 
 
-		  public static DAOFactory getDAOFactory() {
+		  public static DAOFactory getDAOFactory() 
+		  {
 			  int whichFactory = SQLSERVER;
 		  
 		    switch (whichFactory) {

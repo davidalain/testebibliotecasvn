@@ -3,13 +3,13 @@ package br.com.bibliotecavirtual.lib.alugados;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.AlunoDevendoException;
 import br.com.bibliotecavirtual.lib.alunos.AlunoNaoCadastradoException;
-import br.com.bibliotecavirtual.lib.alunos.ControladorAlunos;
+import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplares;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.exemplares.ExemplarNaoDisponivelException;
 
 public class ControladorAlugados {
-	ControladorAlunos ctrlAluno;
+	ControladorAluno ctrlAluno;
 	ControladorExemplares ctrlExemplares;
 
 	public ControladorAlugados() {
