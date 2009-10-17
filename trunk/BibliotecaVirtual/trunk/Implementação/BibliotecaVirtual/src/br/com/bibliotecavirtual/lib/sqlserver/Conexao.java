@@ -119,6 +119,7 @@ public class Conexao implements IConexao {
 		}
 
 		String consulta = prop.getProperty(chave);
+		this.abrirConexao();
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);
 
