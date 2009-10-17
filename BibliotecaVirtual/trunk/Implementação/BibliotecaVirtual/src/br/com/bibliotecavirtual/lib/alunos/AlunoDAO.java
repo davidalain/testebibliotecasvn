@@ -75,12 +75,11 @@ public class AlunoDAO implements IAlunoDAO {
 		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
 
 		if (retorno.next()) {
-			alunoRetorno = new Aluno(retorno.getString("ALN_NM_LOGIN"), retorno
-					.getString("ALN_CD_MATRICULA"), retorno
-					.getString("ALN_NM_EMAIL"));
+			alunoRetorno = new Aluno(retorno.getString("LOGIN"), retorno
+					.getString("MATRICULA"), retorno
+					.getString("EMAIL"));
 
 		}
-
 		return alunoRetorno;
 	}
 
