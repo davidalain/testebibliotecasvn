@@ -4,5 +4,5 @@
   <entry key="inserir">INSERT INTO [biblioteca].[dbo].[FUN_FUNCIONARIO] ([FUN_NM],[FUN_CD_MATRICULA]) VALUES (?,?)</entry>
   <entry key="remover">DELETE FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE [FUN_CD_MATRICULA] = ?</entry> 
   <entry key="atualizar">UPDATE [biblioteca].[dbo].[FUN_FUNCIONARIO] SET [FUN_NM] = ? ,[FUN_CD_MATRICULA] = ? WHERE [FUN_CD_MATRICULA] = ?</entry> 
-  <entry key="buscar">SELECT * FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE FUN_CD_MATRICULA = ?</entry> 
-  </properties>
+  <entry key="buscar">SELECT [FUN_ID] AS ID,[FUN_NM] AS NOME,[FUN_CD_MATRICULA] AS MATRICULA FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE FUN_CD_MATRICULA = ?</entry> 
+</properties>
