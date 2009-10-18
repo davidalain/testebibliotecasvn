@@ -3,16 +3,15 @@ package br.com.bibliotecavirtual.lib.funcionarios;
 public class Funcionario {
 	private String nome;
 	private String cpf;
-	private String senha;
 	
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public Funcionario(String nome, String cpf) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
 	}
 	public String getNome() {
 		return nome;
