@@ -6,15 +6,28 @@ public class Livro {
 	private String isbn;
 	private String area;
 	private String ano;
-
+	private String resumo;
+	
 	public Livro(String titulo, String autor, String isbn, String area,
-			String ano) {
+			String ano, String resumo) {
+		super();
 		this.titulo = titulo;
 		this.autor = autor;
 		this.isbn = isbn;
 		this.area = area;
 		this.ano = ano;
+		this.resumo = resumo;
 	}
+
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
