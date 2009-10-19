@@ -4,13 +4,13 @@ import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class Exemplar {
 
-	public Exemplar(Livro livro, String estado) {
+	public Exemplar(Livro livro, int estado) {
 		super();
 		this.livro = livro;
 		this.estado = estado;
 	}
 
-	public Exemplar(int id, Livro livro, String estado) {
+	public Exemplar(int id, Livro livro, int estado) {
 		super();
 		this.id = id;
 		this.livro = livro;
@@ -37,13 +37,13 @@ public class Exemplar {
 		this.livro = livro;
 	}
 
-	private String estado;
+	private int estado;
 
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 
