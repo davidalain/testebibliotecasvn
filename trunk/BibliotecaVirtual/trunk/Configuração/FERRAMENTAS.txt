@@ -26,3 +26,6 @@ Servidor de aplicação Java para Web
 
 Driver para acesso a banco de dados:
    - SQL Server 2000 Driver for JDBC Service Pack 2:
+
+Ferramentas de auxilio para o uso do Banco de Dado:
+   - Microsoft SQL Server Management Studio Express
