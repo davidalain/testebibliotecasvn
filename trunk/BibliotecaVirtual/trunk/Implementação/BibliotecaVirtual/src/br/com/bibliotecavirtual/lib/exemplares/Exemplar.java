@@ -1,14 +1,36 @@
 package br.com.bibliotecavirtual.lib.exemplares;
 
 public class Exemplar {
-	public Exemplar(int idExemplar, String isbn, String estado) {
-		this.idExemplar = idExemplar;
-		this.isbn = isbn;
+	public Exemplar(int idLivro, String estado) {
+		this.idLivro = idLivro;
 		this.estado = estado;
 	}
 
-	private int idExemplar;
-	private String isbn;
+	public Exemplar(int id, int idLivro, String estado) {
+		this.id = id;
+		this.idLivro = idLivro;
+		this.estado = estado;
+	}
+
+	private int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getIdLivro() {
+		return idLivro;
+	}
+
+	public void setIdLivro(int idLivro) {
+		this.idLivro = idLivro;
+	}
+
+	private int idLivro;
 	private String estado;
 
 	public String getEstado() {
@@ -19,19 +41,4 @@ public class Exemplar {
 		this.estado = estado;
 	}
 
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public void setIdExemplar(int idExemplar) {
-		this.idExemplar = idExemplar;
-	}
-
-	public int getIdExemplar() {
-		return idExemplar;
-	}
 }
