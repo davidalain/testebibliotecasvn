@@ -1,18 +1,27 @@
 package br.com.bibliotecavirtual.devolucoes;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.comum.DAOFactory;
+import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 
 public class DevolucaoDAO implements IDevolucaoDAO {
 
-	public int buscarPorExemplarCont(Exemplar exemplar) {
-		// TODO Auto-generated method stub
-		return 0;
+	private static final String BUSCAR_POR_EXEMPLAR = "buscarPorExemplar";
+	private static final String MAPEAMENTO = Devolucao.class.getName();
+	private IConexao conexao;
+
+	public DevolucaoDAO() {
+		DAOFactory factory = DAOFactory.getDAOFactory();
+
+		conexao = factory.getConexao();
 	}
 
 	public void atualizar(Aluguel aluguel) throws SQLException {
@@ -32,7 +41,16 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 	}
 
 	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
-		// TODO Auto-generated method stub
+		ArrayList<Object> parametros = new ArrayList<Object>();
+
+		parametros.add(exemplar.getId());
+
+		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO,
+				BUSCAR_POR_EXEMPLAR, parametros);
+
+		if (retorno.next()) {
+			return retorno.getInt("QUANTIDADE");
+		}
 		return 0;
 	}
 
