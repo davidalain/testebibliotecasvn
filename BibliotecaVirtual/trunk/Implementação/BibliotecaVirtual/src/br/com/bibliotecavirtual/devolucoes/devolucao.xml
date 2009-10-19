@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties><comment>no</comment> 
-  <entry key="buscarPorExemplar">SELECT * FROM [biblioteca].[dbo].[DEV_DEVOLUCAO] WHERE ALG_ID = ?</entry> 
+  <entry key="buscarPorExemplar">SELECT COUNT([LIV_NM_TITULO]) AS QUANTIDADE FROM [LIV_LIVRO] AS LIV INNER JOIN [EXP_EXEMPLAR] AS EX ON EX.[LIV_ID] = LIV.[LIV_ID] INNER JOIN [ALG_ALUGUEL] AS ALG ON ALG.[EXP_ID] =  EX.[EXP_ID] INNER JOIN [DEV_DEVOLUCAO] AS DEV ON DEV.[ALG_ID] = ALG.[ALG_ID] WHERE LIV.[LIV_ID] = ?</entry> 
  </properties>
