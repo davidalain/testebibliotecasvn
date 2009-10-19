@@ -19,9 +19,17 @@ public class ControladorExemplar {
 		int idLivro = livro.getId();
 		return repositorioExemplares.buscarPorIDLivroCount(idLivro);
 	}
+<<<<<<< .mine
+	
+	public Exemplar buscar(Livro livro) throws SQLException
+	{
+		return this.repositorioExemplares.buscarPorLivro(livro);
+	}
+=======
 	
 	public void cadastrar (Exemplar exemplar) throws SQLException{
 		repositorioExemplares.inserir(exemplar);
 	}
+>>>>>>> .r264
 
 }

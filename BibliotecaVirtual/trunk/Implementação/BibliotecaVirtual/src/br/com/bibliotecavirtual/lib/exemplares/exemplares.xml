@@ -2,8 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>  
   <entry key="inserir">INSERT INTO [biblioteca].[dbo].[EXP_EXEMPLAR]([LIV_ID],[EXP_ST]) VALUES(?,?)</entry>
-  <entry key="remover">DELETE FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE EXP_ID = ?</entry> 
-  <entry key="atualizar"> UPDATE [biblioteca].[dbo].[EXP_EXEMPLAR] SET [LIV_ID] = ? ,[EXP_ST] = ? WHERE EXP_ID = ?</entry> 
-  <entry key="buscar">SELECT [EXP_ID] AS id, [LIV_ID] AS idLivro, [EXP_ST] AS estado FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE EXP_ID = ?</entry>
-  <entry key="buscarQuantidade">SELECT COUNT([EXP_ID]) AS QUANTIDADE FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE LIV_ID = ?</entry> 
+	  <entry key="remover">DELETE FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE EXP_ID = ?</entry> 
+	  <entry key="atualizar"> UPDATE [biblioteca].[dbo].[EXP_EXEMPLAR] SET [LIV_ID] = ? ,[EXP_ST] = ? WHERE EXP_ID = ?</entry> 
+	  <entry key="buscar">SELECT [EXP_ID] AS id, [LIV_ID] AS idLivro, [EXP_ST] AS estado FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE EXP_ID = ?</entry>
+	  <entry key="buscarQuantidade">SELECT COUNT([EXP_ID]) AS QUANTIDADE FROM [biblioteca].[dbo].[EXP_EXEMPLAR] WHERE LIV_ID = ?</entry> 
+	  <entry key="buscarPorLivro">SELECT TOP(1) EX.[EXP_ID] AS id, [EX.LIV_ID] AS idLivro, EX.[EXP_ST] AS estado,  FROM [EXP_EXEMPLAR] AS EX 	INNER JOIN [LIV_LIVRO] AS LIV ON LIV.[LIV_ID] = EX.[LIV_ID]</entry>
   </properties>
