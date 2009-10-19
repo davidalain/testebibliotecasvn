@@ -1,5 +1,6 @@
 package br.com.bibliotecavirtual.lib.reservas;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
@@ -14,13 +15,12 @@ public class ControladorReserva {
 	}
 	
 	
-	public boolean possuiReserva(Livro livro){
+	public boolean possuiReserva(Livro livro) throws SQLException{
 		
-		
-		
-		
-		
+		return this.repositorioReserva.existeReserva(livro);
 	}
+	
+	
 	
 	
 	
