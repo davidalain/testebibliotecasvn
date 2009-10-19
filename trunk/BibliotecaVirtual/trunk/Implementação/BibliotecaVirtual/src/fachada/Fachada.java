@@ -2,10 +2,10 @@ package fachada;
 
 import java.sql.SQLException;
 
-import br.com.bibliotecavirtual.devolucoes.ControladorDevolucao;
 import br.com.bibliotecavirtual.lib.alugueis.ControladorAluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
+import br.com.bibliotecavirtual.lib.devolucoes.ControladorDevolucao;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplar;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 
@@ -19,6 +19,9 @@ public class Fachada {
 
 	private Fachada() {
 		this.controladorAluno = new ControladorAluno();
+		this.controladorExemplar = new ControladorExemplar();
+		this.controladorDevolucao = new ControladorDevolucao();
+		this.controladorAluguel = new ControladorAluguel();
 	}
 
 	public static Fachada getInstance() {
