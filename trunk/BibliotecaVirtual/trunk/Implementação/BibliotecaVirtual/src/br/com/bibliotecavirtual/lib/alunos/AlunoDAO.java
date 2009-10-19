@@ -12,7 +12,8 @@ public class AlunoDAO implements IAlunoDAO {
 	private static final String INSERIR = "inserir";
 	private static final String REMOVER = "removerPorID";
 	private static final String ATUALIZAR = "atualizar";
-	private static final String BUSCAR = "buscar";
+	private static final String BUSCAR_POR_MATRICULA = "buscarPorMatricula";
+	private static final String BUSCAR_POR_ID = "buscarPorID";
 	private static final String MAPEAMENTO = Aluno.class.getName();
 	private static final String REMOVER_POR_MATRICULA = "removerPorMatricula";
 	private IConexao conexao;
@@ -57,9 +58,24 @@ public class AlunoDAO implements IAlunoDAO {
 
 	}
 
-	public Aluno buscarPorID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Aluno buscarPorID(int id) throws SQLException {
+		Aluno alunoRetorno = null;
+
+		ResultSet retorno = null;
+
+		ArrayList<Object> parametros = new ArrayList<Object>();
+
+		parametros.add(id);
+
+		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_ID, parametros);
+
+		if (retorno.next()) {
+			alunoRetorno = new Aluno(retorno.getInt("ID"),retorno.getString("LOGIN"), 
+					retorno.getString("MATRICULA"), retorno.getString("EMAIL"));
+		}
+
+		return alunoRetorno;
+	
 	}
 
 	public Aluno buscarPorMatricula(String matricula) throws SQLException {
@@ -72,7 +88,7 @@ public class AlunoDAO implements IAlunoDAO {
 
 		parametros.add(matricula);
 
-		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
+		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_MATRICULA, parametros);
 
 		if (retorno.next()) {
 			alunoRetorno = new Aluno(retorno.getInt("ID"),retorno.getString("LOGIN"), 
