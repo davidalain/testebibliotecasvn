@@ -1,13 +1,18 @@
 package fachada;
 
 import java.sql.SQLException;
+import java.util.Date;
 
+import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.alugueis.ControladorAluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
+import br.com.bibliotecavirtual.lib.comum.Data;
 import br.com.bibliotecavirtual.lib.devolucoes.ControladorDevolucao;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplar;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.exemplares.ExemplarNaoDisponivelException;
+import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class Fachada {
@@ -50,5 +55,35 @@ public class Fachada {
 		return (numAlugueis - numDevolucoes < numExemplares);
 	}
 	
+	public void alugar(Aluno aluno, Funcionario funcionario, Exemplar exemplar) throws SQLException, ExemplarNaoDisponivelException
+	{
+		if(!existeExemplarDisponivel(exemplar.getLivro()))
+		{
+			throw new ExemplarNaoDisponivelException();
+		}
+		
+		if(this.validarSituacaoCadastralAluno(aluno.getCpf()))
+		{
+			
+		}
+		
+		Aluguel novoluguel = new Aluguel();
+		
+		Data dataAluguel = new Data(new Date().toString());
+		
+		Data dataDevolucao = controladorDevolucao.calcularDataDevolucao(dataAluguel);
+		
+		novoluguel.setAluno(aluno);
+		
+		novoluguel.setDataAluguel(dataAluguel);
+		
+		novoluguel.setDataDevolucao(dataDevolucao);
+		
+		novoluguel.setExemplar(exemplar);
+		
+		novoluguel.setFuncionario(funcionario);
+		
+		this.controladorAluguel.alugar(novoluguel);
+	}
 
 }
