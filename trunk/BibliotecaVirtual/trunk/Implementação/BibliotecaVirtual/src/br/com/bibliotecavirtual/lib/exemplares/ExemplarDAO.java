@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
+import br.com.bibliotecavirtual.lib.livros.ILivroDAO;
+import br.com.bibliotecavirtual.lib.livros.Livro;
+import br.com.bibliotecavirtual.lib.livros.LivroDAO;
 
 public class ExemplarDAO implements IExemplarDAO {
 	private static final String INSERIR = "inserir";
@@ -68,19 +71,16 @@ public class ExemplarDAO implements IExemplarDAO {
 
 	public Exemplar buscarPorID(int id) throws SQLException {
 		Exemplar exemplarRetorno = null;
-
 		ResultSet retorno = null;
-
 		ArrayList<Object> parametros = new ArrayList<Object>();
-
 		parametros.add(id);
-
 		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
+		ILivroDAO livros = new LivroDAO();
 
 		if (retorno.next()) {
-
-			exemplarRetorno = new Exemplar(retorno.getInt("id"), retorno
-					.getInt("idLivro"), retorno.getString("estado"));
+			Livro livro = livros.buscarPorID(id);
+			exemplarRetorno = new Exemplar(retorno.getInt("id"), livro, retorno
+					.getString("estado"));
 
 		}
 

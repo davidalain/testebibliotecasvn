@@ -12,4 +12,6 @@ public interface IExemplarDAO {
 	public void inserir(Exemplar e) throws SQLException;
 
 	public boolean existe(int id) throws SQLException;
+
+	public int quantidade(int idLivro) throws SQLException;
 }

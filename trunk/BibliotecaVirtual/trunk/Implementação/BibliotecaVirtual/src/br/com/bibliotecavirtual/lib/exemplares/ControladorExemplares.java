@@ -1,11 +1,19 @@
 package br.com.bibliotecavirtual.lib.exemplares;
 
+import br.com.bibliotecavirtual.lib.comum.DAOFactory;
+
 public class ControladorExemplares {
 
-	private RepositorioExemplares repExemplares;
+	private IExemplarDAO repositorioExemplares;
 
-	public boolean existeExemplarDisponivel(Exemplar exemplar) {
-		return !(repExemplares.existeFilaEspera(exemplar));
+	public ControladorExemplares() {
+		DAOFactory factory = DAOFactory.getDAOFactory();
+
+		this.repositorioExemplares = factory.getExemplarDAO();
 	}
 
+	public boolean existeExemplarDisponivel(Exemplar exemplar) {
+		repositorioExemplares.quantidade(exemplar.getLivro().getId());
+		repositorioAlugueis.
+	}
 }
