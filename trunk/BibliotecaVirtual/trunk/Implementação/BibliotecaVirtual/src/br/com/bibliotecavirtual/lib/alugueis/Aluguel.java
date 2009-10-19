@@ -8,13 +8,31 @@ import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 
-public class Aluguel {
+public class Aluguel 
+{
+	private int id;
 	private Aluno aluno;
 	private Funcionario funcionario;
 	private Exemplar exemplar;
 	private Date dataAluguel;
 	private Date dataDevolucao;
 
+	public Aluguel()
+	{
+		
+	}
+	
+	public Aluguel(int id, Aluno aluno, Exemplar exemplar, Funcionario funcionario,
+			Date dataAluguel, Date dataDevolucao)
+	{
+		this.id = id;
+		this.aluno = aluno;
+		this.exemplar = exemplar;
+		this.funcionario = funcionario;
+		this.dataAluguel = dataAluguel;
+		this.dataDevolucao = dataDevolucao;
+	}
+	
 	public Aluguel(Aluno aluno, Exemplar exemplar, Funcionario funcionario,
 			Date dataAluguel, Date dataDevolucao) {
 		this.aluno = aluno;
@@ -22,6 +40,15 @@ public class Aluguel {
 		this.funcionario = funcionario;
 		this.dataAluguel = dataAluguel;
 		this.dataDevolucao = dataDevolucao;
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Aluno getAluno() {
