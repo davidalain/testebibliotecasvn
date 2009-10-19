@@ -8,36 +8,30 @@ import java.util.Date;
 
 public class Data extends Date
 {
-	private Date date;
+	
+	private DateFormat formatter;
+	
+	public Data() 
+	{
+		super();
+		
+	}
 	
 	public Data(String format) throws ParseException
 	{
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		super();
 		
+		this.formatter = new SimpleDateFormat("dd-MM-yyyy");
 		
-		this.date = df.parse(format);
 	}
 	
-	
-	
-	public Date getData() 
-	{
-		return date;
-	}
-
-
-
-	public void setData(Date date) {
-		this.date = date;
-	}
 
 
 
 	@Override
-	public String toString() {
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-		// TODO Auto-generated method stub
-		return df.format(this);
+	public String toString() 
+	{
+		return this.formatter.format(this);
 	}
 
 }

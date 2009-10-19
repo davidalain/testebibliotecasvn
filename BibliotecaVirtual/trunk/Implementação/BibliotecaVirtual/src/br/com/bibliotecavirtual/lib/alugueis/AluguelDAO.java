@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
+import br.com.bibliotecavirtual.lib.comum.Data;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
@@ -127,7 +128,7 @@ public class AluguelDAO implements IAluguelDAO
 		return aluguelEncontrado;
 	}
 
-	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal) throws SQLException 
+	public Collection<Aluguel> buscarPorPeriodo(Data dataInicial, Data dataFinal) throws SQLException 
 	{
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		
@@ -149,7 +150,7 @@ public class AluguelDAO implements IAluguelDAO
 		return alugueisEncontrados;
 	}
 
-	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal)
+	public int buscarPorPeriodoCount(Data dataInicial, Data dataFinal)
 			throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
@@ -187,11 +188,11 @@ public class AluguelDAO implements IAluguelDAO
 		Aluguel aluguelEncontrado = new Aluguel();
 		
 		
-		DateFormat formater = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.FRANCE);
 		
-		Date dataAluguel = null;
 		
-		Date dataDevolucao = null;
+		Data dataAluguel = null;
+		
+		Data dataDevolucao = null;
 		try
 		{
 			int id = Integer.parseInt(retorno.getString("id"));
@@ -202,9 +203,9 @@ public class AluguelDAO implements IAluguelDAO
 			
 			int funcionarioId = Integer.parseInt(retorno.getString("funcionario"));
 			
-			dataAluguel = formater.parse(retorno.getString("dataAluguel"));
+			dataAluguel = new Data( retorno.getString("dataAluguel"));
 			
-			dataDevolucao = formater.parse(retorno.getString("dataDevolucao"));	
+			dataDevolucao =  new Data (retorno.getString("dataDevolucao"));	
 			
 			Exemplar exemplar = DAOFactory.getDAOFactory().getExemplarDAO().buscarPorID(exemplarId);
 			

@@ -5,6 +5,7 @@ package br.com.bibliotecavirtual.lib.alugueis;
 import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.comum.Data;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 
@@ -14,8 +15,8 @@ public class Aluguel
 	private Aluno aluno;
 	private Funcionario funcionario;
 	private Exemplar exemplar;
-	private Date dataAluguel;
-	private Date dataDevolucao;
+	private Data dataAluguel;
+	private Data dataDevolucao;
 
 	public Aluguel()
 	{
@@ -23,7 +24,7 @@ public class Aluguel
 	}
 	
 	public Aluguel(int id, Aluno aluno, Exemplar exemplar, Funcionario funcionario,
-			Date dataAluguel, Date dataDevolucao)
+			Data dataAluguel, Data dataDevolucao)
 	{
 		this.id = id;
 		this.aluno = aluno;
@@ -34,7 +35,7 @@ public class Aluguel
 	}
 	
 	public Aluguel(Aluno aluno, Exemplar exemplar, Funcionario funcionario,
-			Date dataAluguel, Date dataDevolucao) {
+			Data dataAluguel, Data dataDevolucao) {
 		this.aluno = aluno;
 		this.exemplar = exemplar;
 		this.funcionario = funcionario;
@@ -79,7 +80,7 @@ public class Aluguel
 		return dataAluguel;
 	}
 
-	public void setDataAluguel(Date dataAluguel) {
+	public void setDataAluguel(Data dataAluguel) {
 		this.dataAluguel = dataAluguel;
 	}
 
@@ -87,7 +88,7 @@ public class Aluguel
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(Data dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
