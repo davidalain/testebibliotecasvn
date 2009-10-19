@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.lib.alugados;
+package br.com.bibliotecavirtual.lib.alugueis;
 
 import java.sql.Date;
 

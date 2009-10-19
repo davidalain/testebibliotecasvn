@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.lib.alugados;
+package br.com.bibliotecavirtual.lib.alugueis;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.AlunoDevendoException;
