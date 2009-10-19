@@ -1,45 +1,51 @@
 package br.com.bibliotecavirtual.lib.alugueis;
 
-import java.sql.Date;
+
+
+import java.util.Date;
+
+import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 
 public class Aluguel {
-	private String idAluno;
-	private String idFuncionario;
-	private String idExemplar;
+	private Aluno aluno;
+	private Funcionario funcionario;
+	private Exemplar exemplar;
 	private Date dataAluguel;
 	private Date dataDevolucao;
 
-	public Aluguel(String idAluno, String idExemplar, String idFuncionario,
+	public Aluguel(Aluno aluno, Exemplar exemplar, Funcionario funcionario,
 			Date dataAluguel, Date dataDevolucao) {
-		this.idAluno = idAluno;
-		this.idExemplar = idExemplar;
-		this.idFuncionario = idFuncionario;
+		this.aluno = aluno;
+		this.exemplar = exemplar;
+		this.funcionario = funcionario;
 		this.dataAluguel = dataAluguel;
 		this.dataDevolucao = dataDevolucao;
 	}
 
-	public String getIdExemplar() {
-		return idExemplar;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setIdExemplar(String idExemplar) {
-		this.idExemplar = idExemplar;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
-	public String getIdAluno() {
-		return idAluno;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setIdAluno(String idAluno) {
-		this.idAluno = idAluno;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
-	public String getIdFuncionario() {
-		return idFuncionario;
+	public Exemplar getExemplar() {
+		return exemplar;
 	}
 
-	public void setIdFuncionario(String idFuncionario) {
-		this.idFuncionario = idFuncionario;
+	public void setExemplar(Exemplar exemplar) {
+		this.exemplar = exemplar;
 	}
 
 	public Date getDataAluguel() {
@@ -58,4 +64,5 @@ public class Aluguel {
 		this.dataDevolucao = dataDevolucao;
 	}
 
+	
 }
