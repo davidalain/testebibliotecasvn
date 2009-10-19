@@ -73,7 +73,7 @@ public class LivroDAO implements ILivroDAO{
 		parametros.add(isbn);
 		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR, parametros);
 		if (rs.next()){
-			livroRetorno = new Livro(rs.getString("TITULO"), rs.getString("AUTOR"), 
+			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 
 					rs.getString("ISBN"), rs.getString("AREA"), 
 					rs.getString("ANO"), rs.getString("RESUMO"));
 		}
