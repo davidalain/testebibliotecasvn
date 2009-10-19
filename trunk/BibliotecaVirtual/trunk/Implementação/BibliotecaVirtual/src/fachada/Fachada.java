@@ -8,6 +8,7 @@ import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
 import br.com.bibliotecavirtual.lib.devolucoes.ControladorDevolucao;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplar;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class Fachada {
 	private static Fachada instance;
@@ -40,13 +41,14 @@ public class Fachada {
 		this.controladorAluno.cadastrarAluno(a);
 	}
 
-	public boolean existeExemplarDisponivel(Exemplar exemplar)
+	public boolean existeExemplarDisponivel(Livro livro)
 			throws SQLException {
-		int numExemplares = controladorExemplar.quantidadeExemplares(exemplar);
-		int numAlugueis = controladorAluguel.quantidade(exemplar);
-		int numDevolucoes = controladorDevolucao.quantidadeDevolucao(exemplar);
+		int numExemplares = controladorExemplar.quantidadeExemplares(livro);
+		int numAlugueis = controladorAluguel.quantidade(livro);
+		int numDevolucoes = controladorDevolucao.quantidadeDevolucao(livro);
 
 		return (numAlugueis - numDevolucoes < numExemplares);
 	}
+	
 
 }

@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.devolucoes;
+package br.com.bibliotecavirtual.lib.devolucoes;
 
 import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.comum.Data;

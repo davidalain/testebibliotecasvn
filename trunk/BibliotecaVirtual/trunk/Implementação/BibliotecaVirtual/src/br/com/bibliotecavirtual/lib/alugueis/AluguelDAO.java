@@ -15,6 +15,7 @@ import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class AluguelDAO implements IAluguelDAO
 {
@@ -80,13 +81,13 @@ public class AluguelDAO implements IAluguelDAO
 		return this.buscarPorAluno(aluno).size();
 	}
 
-	public Collection<Aluguel> buscarPorExemplar(Exemplar exemplar)throws SQLException 
+	public Collection<Aluguel> buscarPorLivro(Livro livro)throws SQLException 
 	{
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		
 		ArrayList<Aluguel> alugueisEncontrados = new  ArrayList<Aluguel>();
 		
-		parametros.add(exemplar.getId());
+		parametros.add(livro.getId());
 		
 		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_EXEMPLAR, parametros);
 		
@@ -100,8 +101,8 @@ public class AluguelDAO implements IAluguelDAO
 		return alugueisEncontrados;
 	}
 
-	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
-		return this.buscarPorExemplar(exemplar).size();
+	public int buscarPorLivroCount(Livro livro) throws SQLException {
+		return this.buscarPorLivro(livro).size();
 	}
 
 	public Aluguel buscarPorID(int id) throws SQLException 

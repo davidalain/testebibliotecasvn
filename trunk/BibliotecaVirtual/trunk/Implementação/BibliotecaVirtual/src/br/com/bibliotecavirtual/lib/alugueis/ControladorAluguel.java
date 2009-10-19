@@ -3,7 +3,7 @@ package br.com.bibliotecavirtual.lib.alugueis;
 import java.sql.SQLException;
 
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
-import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class ControladorAluguel 
 {
@@ -16,8 +16,8 @@ public class ControladorAluguel
 		this.alugueis = factory.getAluguelDAO();
 	}
 	
-	public int quantidade(Exemplar exemplar) throws SQLException
+	public int quantidade(Livro livro) throws SQLException
 	{
-		return alugueis.buscarPorExemplarCount(exemplar);
+		return alugueis.buscarPorLivroCount(livro);
 	}
 }

@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.devolucoes;
+package br.com.bibliotecavirtual.lib.devolucoes;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,8 @@ import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
-import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.livros.Livro;
+
 
 public class DevolucaoDAO implements IDevolucaoDAO {
 
@@ -34,16 +35,16 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 		return 0;
 	}
 
-	public Collection<Devolucao> buscarPorExemplar(Exemplar exemplar)
+	public Collection<Devolucao> buscarPorLivro(Livro livro)
 			throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
+	public int buscarPorLivroCount(Livro livro) throws SQLException {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
-		parametros.add(exemplar.getLivro().getId());
+		parametros.add(livro.getId());
 
 		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO,
 				BUSCAR_POR_EXEMPLAR, parametros);

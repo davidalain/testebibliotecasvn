@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.devolucoes;
+package br.com.bibliotecavirtual.lib.devolucoes;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
-import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public interface IDevolucaoDAO {
 	public void inserir(Aluguel aluguel) throws SQLException;
@@ -23,7 +23,7 @@ public interface IDevolucaoDAO {
 	public Collection<Devolucao> buscarPorFuncionario(Aluno aluno)
 			throws SQLException;
 
-	public Collection<Devolucao> buscarPorExemplar(Exemplar exemplar)
+	public Collection<Devolucao> buscarPorLivro(Livro livro)
 			throws SQLException;
 
 	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal)
@@ -31,6 +31,6 @@ public interface IDevolucaoDAO {
 
 	public int buscarPorAlunoCount(Aluguel aluguel) throws SQLException;
 
-	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException;
+	public int buscarPorLivroCount(Livro livro) throws SQLException;
 
 }
