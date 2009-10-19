@@ -1,5 +1,7 @@
 package br.com.bibliotecavirtual.lib.sqlserver;
 
+import br.com.bibliotecavirtual.devolucoes.DevolucaoDAO;
+import br.com.bibliotecavirtual.devolucoes.IDevolucaoDAO;
 import br.com.bibliotecavirtual.lib.alunos.AlunoDAO;
 import br.com.bibliotecavirtual.lib.alunos.IAlunoDAO;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
@@ -32,6 +34,10 @@ public class SqlServerDAOFactory extends DAOFactory {
 
 	public IExemplarDAO getExemplarDAO() {
 		return new ExemplarDAO();
+	}
+
+	public IDevolucaoDAO getDevolucaoDAO() {
+		return new DevolucaoDAO();
 	}
 
 }
