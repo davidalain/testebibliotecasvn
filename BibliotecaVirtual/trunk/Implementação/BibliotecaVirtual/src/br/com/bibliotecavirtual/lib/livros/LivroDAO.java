@@ -12,8 +12,8 @@ public class LivroDAO implements ILivroDAO{
 	private static final String INSERIR = "inserir";
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
-	private static final String BUSCARPORISBN = "buscarPorISBN";
-	private static final String BUSCARPORID = "buscarPorID";
+	private static final String BUSCAR_POR_ISBN = "buscarPorISBN";
+	private static final String BUSCAR_POR_ID = "buscarPorID";
 	
 	private static final String MAPEAMENTO = Livro.class.getName();
 	private IConexao conexao;
@@ -73,7 +73,7 @@ public class LivroDAO implements ILivroDAO{
 		Livro livroRetorno = null;
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(isbn);
-		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCARPORISBN, parametros);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR_POR_ISBN, parametros);
 		
 		if (rs.next()){
 			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 
@@ -88,7 +88,7 @@ public class LivroDAO implements ILivroDAO{
 		Livro livroRetorno = null;
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(id);
-		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCARPORID, parametros);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR_POR_ID, parametros);
 		
 		if (rs.next()){
 			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 

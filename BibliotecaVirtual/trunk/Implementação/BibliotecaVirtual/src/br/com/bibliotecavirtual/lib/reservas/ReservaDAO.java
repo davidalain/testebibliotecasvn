@@ -20,9 +20,9 @@ public class ReservaDAO implements IReservaDAO {
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCARPORID = "buscarPorID";
-	private static final String BUSCARPORLIVRO = "buscarPorLivro";
-	private static final String BUSCARPORFUNCIONARIO = "buscarPorFuncionario";
-	private static final String EXISTELIVRO = "existeLivro";
+	private static final String BUSCAR_POR_LIVRO = "buscarPorLivro";
+	private static final String BUSCAR_POR_FUNCIONARIO = "buscarPorFuncionario";
+	private static final String EXISTE_LIVRO = "existeLivro";
 	
 	private static final String MAPEAMENTO = Reserva.class.getName();
 	private IConexao conexao;
@@ -109,7 +109,7 @@ public class ReservaDAO implements IReservaDAO {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(livroID);
 		
-		ResultSet rs = this.conexao.executeQuery(MAPEAMENTO, ReservaDAO.EXISTELIVRO, parametros);
+		ResultSet rs = this.conexao.executeQuery(MAPEAMENTO, ReservaDAO.EXISTE_LIVRO, parametros);
 		
 		if (rs.next()){
 			return true;
