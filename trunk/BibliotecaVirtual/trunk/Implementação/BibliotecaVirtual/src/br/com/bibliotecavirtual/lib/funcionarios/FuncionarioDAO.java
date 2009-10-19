@@ -13,8 +13,10 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 	private static final String INSERIR = "inserir";
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
-	private static final String BUSCAR = "buscar";
+	private static final String BUSCARPORMATRICULAR = "buscarPorMatricula";
 	private static final String MAPEAMENTO = Funcionario.class.getName();
+	private static final String BUSCARPORID = "buscarPorID";
+	
 	private IConexao conexao;
 	
 	public FuncionarioDAO(){
@@ -42,10 +44,10 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 		this.conexao.executeNonQuery(MAPEAMENTO, FuncionarioDAO.INSERIR, parametros);
 	}
 	
-	public Funcionario buscar (String matricula) throws SQLException{
+	public Funcionario buscarPorMatricula (String matricula) throws SQLException{
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(matricula);
-		ResultSet rs = conexao.executeQuery(MAPEAMENTO, FuncionarioDAO.BUSCAR, parametros);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, FuncionarioDAO.BUSCARPORMATRICULAR, parametros);
 		Funcionario funcionarioRetorno = null;
 		if (rs.next()){
 			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"));
@@ -61,7 +63,18 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 	}
 	
 	public boolean existe (String matricula) throws SQLException{
-		return this.buscar(matricula) != null;
+		return this.buscarPorMatricula(matricula) != null;
+	}
+
+	public Funcionario buscarPorID(int id) throws SQLException {
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		parametros.add(id);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, FuncionarioDAO.BUSCARPORID, parametros);
+		Funcionario funcionarioRetorno = null;
+		if (rs.next()){
+			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"));
+		}
+		return funcionarioRetorno;
 	}
 	
 }
