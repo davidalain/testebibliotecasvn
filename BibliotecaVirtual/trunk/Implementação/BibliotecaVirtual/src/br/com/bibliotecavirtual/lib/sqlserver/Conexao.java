@@ -129,7 +129,7 @@ public class Conexao implements IConexao {
 			indice++;
 		}
 
-//		this.abrirConexao();
+		this.abrirConexao();
 
 		ResultSet retorno = comando.executeQuery();
 
