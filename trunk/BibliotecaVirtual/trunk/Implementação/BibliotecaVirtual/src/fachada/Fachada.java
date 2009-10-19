@@ -69,7 +69,7 @@ public class Fachada {
 		
 		Aluguel novoluguel = new Aluguel();
 		
-		Data dataAluguel = new Data(new Date().toString());
+		Data dataAluguel = new Data();
 		
 		Data dataDevolucao = controladorDevolucao.calcularDataDevolucao(dataAluguel);
 		

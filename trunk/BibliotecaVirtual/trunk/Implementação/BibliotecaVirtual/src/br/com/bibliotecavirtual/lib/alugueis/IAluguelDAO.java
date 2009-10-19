@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.comum.Data;
 import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public interface IAluguelDAO 
@@ -17,13 +18,13 @@ public interface IAluguelDAO
 	
 	public Aluguel buscarPorID(int id) throws SQLException;
 	
-	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal) throws SQLException;
+	public Collection<Aluguel> buscarPorPeriodo(Data dataInicial, Data dataFinal) throws SQLException;
 	
 	public Collection<Aluguel> buscarPorAluno(Aluno aluno) throws SQLException;
 
 	public Collection<Aluguel> buscarPorLivro(Livro livro) throws SQLException;
 	
-	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal) throws SQLException;
+	public int buscarPorPeriodoCount(Data dataInicial, Data dataFinal) throws SQLException;
 	
 	public int buscarPorAlunoCount(Aluno aluno) throws SQLException;
 	
