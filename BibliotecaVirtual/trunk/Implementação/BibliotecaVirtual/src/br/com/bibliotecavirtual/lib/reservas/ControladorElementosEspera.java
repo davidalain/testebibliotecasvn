@@ -1,4 +1,4 @@
-package br.com.bibliotecavirtual.lib.filaEspera;
+package br.com.bibliotecavirtual.lib.reservas;
 
 import java.util.List;
 
@@ -13,23 +13,23 @@ public class ControladorElementosEspera {
 	}
 
 	public boolean possuiFilaEspera(Livro livro) {
-		ElementoEspera elemento = new ElementoEspera(null, "", livro.getIsbn());
+		ElementoReserva elemento = new ElementoReserva(null, "", livro.getIsbn());
 		return (repositorio.buscar(elemento) != null);
 	}
 
-	public void cadastrar(ElementoEspera fila) {
+	public void cadastrar(ElementoReserva fila) {
 
 	}
 
-	public void remover(ElementoEspera fila) {
+	public void remover(ElementoReserva fila) {
 
 	}
 
-	public boolean existe(ElementoEspera fila) {
+	public boolean existe(ElementoReserva fila) {
 
 	}
 
-	public List<ElementoEspera> procurar(String livroId) {
+	public List<ElementoReserva> procurar(String livroId) {
 
 	}
 
