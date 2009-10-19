@@ -15,7 +15,7 @@ public interface IAluguelDAO
 	
 	public void atualizar(Aluguel aluguel) throws SQLException;
 	
-	public void buscarPorID(int id) throws SQLException;
+	public Aluguel buscarPorID(int id) throws SQLException;
 	
 	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal) throws SQLException;
 	
@@ -25,7 +25,7 @@ public interface IAluguelDAO
 	
 	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal) throws SQLException;
 	
-	public int buscarPorAlunoCount(Aluguel aluguel) throws SQLException;
+	public int buscarPorAlunoCount(Aluno aluno) throws SQLException;
 	
 	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException;
 	
