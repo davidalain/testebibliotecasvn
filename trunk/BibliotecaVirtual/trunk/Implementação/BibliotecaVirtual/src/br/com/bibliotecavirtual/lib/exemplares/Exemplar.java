@@ -9,6 +9,11 @@ public class Exemplar {
 		this.livro = livro;
 		this.estado = estado;
 	}
+	
+	public Exemplar()
+	{
+		
+	}
 
 	public Exemplar(int id, Livro livro, int estado) {
 		super();
