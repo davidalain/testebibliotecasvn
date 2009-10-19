@@ -87,7 +87,7 @@ public class ExemplarDAO implements IExemplarDAO {
 		return exemplarRetorno;
 	}
 
-	public int quantidade(int idLivro) throws SQLException {
+	public int buscarPorIDLivroCont(int idLivro) throws SQLException {
 		ResultSet retorno = null;
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
