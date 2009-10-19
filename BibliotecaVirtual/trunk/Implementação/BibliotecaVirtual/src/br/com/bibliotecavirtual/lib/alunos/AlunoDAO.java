@@ -38,7 +38,7 @@ public class AlunoDAO implements IAlunoDAO {
 		parametros.add(matricula);
 
 		this.conexao
-				.executeNonQuery(MAPEAMENTO, AlunoDAO.ATUALIZAR, parametros);
+		.executeNonQuery(MAPEAMENTO, AlunoDAO.ATUALIZAR, parametros);
 
 	}
 
@@ -75,11 +75,10 @@ public class AlunoDAO implements IAlunoDAO {
 		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
 
 		if (retorno.next()) {
-			alunoRetorno = new Aluno(retorno.getString("LOGIN"), retorno
-					.getString("MATRICULA"), retorno
-					.getString("EMAIL"));
-
+			alunoRetorno = new Aluno(retorno.getInt("ID"),retorno.getString("LOGIN"), 
+					retorno.getString("MATRICULA"), retorno.getString("EMAIL"));
 		}
+
 		return alunoRetorno;
 	}
 
@@ -109,7 +108,7 @@ public class AlunoDAO implements IAlunoDAO {
 
 	public void remover(String matricula) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

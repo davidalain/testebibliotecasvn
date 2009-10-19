@@ -7,15 +7,24 @@ public class Aluno {
 	private String cpf;
 	private String email;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Aluno(String nome, String cpf, String email) {
 		super();
 		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.id = 0;
 	}
 	
-	public Aluno(int id, String nome, String cpf, String senha, String email) {
+	public Aluno(int id, String nome, String cpf, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
