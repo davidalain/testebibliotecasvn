@@ -2,20 +2,23 @@ package br.com.bibliotecavirtual.lib.exemplares;
 
 import java.sql.SQLException;
 
-import br.com.bibliotecavirtual.devolucoes.IDevolucaoDAO;
-import br.com.bibliotecavirtual.lib.alugueis.IAluguelDAO;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 
-public class ControladorExemplares {
+public class ControladorExemplar {
 
 	private IExemplarDAO repositorioExemplares;
-	private IAluguelDAO repositorioAlugueis;
-	private IDevolucaoDAO repositorioDevolucoes;
+	private ControladorAluguel repositorioAlugueis;
+	private Controlador repositorioDevolucoes;
 
-	public ControladorExemplares() {
+	public ControladorExemplar() {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 
 		this.repositorioExemplares = factory.getExemplarDAO();
+	}
+
+	public int quantidadeExemplares(Exemplar exemplar) {
+		int idLivro = exemplar.getLivro().getId();
+		return repositorioExemplares.buscarPorIDLivroCount(idLivro);
 	}
 
 	public boolean existeExemplarDisponivel(Exemplar exemplar)
@@ -25,7 +28,7 @@ public class ControladorExemplares {
 				.buscarPorIDLivroCount(idLivro);
 		int numAlugueis = repositorioAlugueis.buscarPorExemplarCount(exemplar);
 		int numDevolucoes = repositorioDevolucoes
-				.buscarPorExemplarCont(exemplar);
+				.buscarPorExemplarCount(exemplar);
 
 		return (numAlugueis - numDevolucoes < numExemplares);
 	}
