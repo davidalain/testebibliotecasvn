@@ -12,6 +12,7 @@ public class ExemplarDAO implements IExemplarDAO {
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCAR = "buscar";
+	private static final String QUANTIDADE = "buscarQuantidade";
 	private static final String MAPEAMENTO = Exemplar.class.getName();
 
 	private IConexao conexao;
@@ -27,7 +28,7 @@ public class ExemplarDAO implements IExemplarDAO {
 
 	public void atualizar(Exemplar exemplar) throws SQLException {
 		int id = exemplar.getId();
-		int idLivro = exemplar.getIdLivro();
+		int idLivro = exemplar.getLivro().getId();
 		String estado = exemplar.getEstado();
 
 		ArrayList<Object> parametros = new ArrayList<Object>();
@@ -41,7 +42,7 @@ public class ExemplarDAO implements IExemplarDAO {
 	}
 
 	public void inserir(Exemplar exemplar) throws SQLException {
-		int idLivro = exemplar.getIdLivro();
+		int idLivro = exemplar.getLivro().getId();
 		String estado = exemplar.getEstado();
 
 		ArrayList<Object> parametros = new ArrayList<Object>();
@@ -77,11 +78,29 @@ public class ExemplarDAO implements IExemplarDAO {
 		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR, parametros);
 
 		if (retorno.next()) {
+
 			exemplarRetorno = new Exemplar(retorno.getInt("id"), retorno
 					.getInt("idLivro"), retorno.getString("estado"));
 
 		}
 
 		return exemplarRetorno;
+	}
+
+	public int quantidade(int idLivro) throws SQLException {
+		ResultSet retorno = null;
+		ArrayList<Object> parametros = new ArrayList<Object>();
+
+		parametros.add(idLivro);
+
+		retorno = conexao.executeQuery(MAPEAMENTO, QUANTIDADE, parametros);
+
+		int cont = 0;
+
+		while (retorno.next()) {
+			cont++;
+		}
+
+		return cont;
 	}
 }
