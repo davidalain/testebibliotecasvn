@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties><comment>no</comment> 
+  <entry key="buscarPorExemplar">SELECT * FROM [biblioteca].[dbo].[DEV_DEVOLUCAO] WHERE ALG_ID = ?</entry> 
+ </properties>
