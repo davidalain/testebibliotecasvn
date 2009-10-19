@@ -3,6 +3,7 @@ package fachada;
 import java.sql.SQLException;
 
 import br.com.bibliotecavirtual.devolucoes.ControladorDevolucao;
+import br.com.bibliotecavirtual.lib.alugueis.ControladorAluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.alunos.ControladorAluno;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplar;
@@ -14,6 +15,7 @@ public class Fachada {
 	private ControladorAluno controladorAluno;
 	private ControladorExemplar controladorExemplar;
 	private ControladorDevolucao controladorDevolucao;
+	private ControladorAluguel controladorAluguel;
 
 	private Fachada() {
 		this.controladorAluno = new ControladorAluno();
@@ -39,7 +41,7 @@ public class Fachada {
 			throws SQLException {
 		int idLivro = exemplar.getLivro().getId();
 		int numExemplares = controladorExemplar.quantidadeExemplares(exemplar);
-		int numAlugueis = controladorAluguel.quantidadeAlugueis(exemplar);
+		int numAlugueis = controladorAluguel.quantidade(exemplar);
 		int numDevolucoes = controladorDevolucao.quantidadeDevolucao(exemplar);
 
 		return (numAlugueis - numDevolucoes < numExemplares);
