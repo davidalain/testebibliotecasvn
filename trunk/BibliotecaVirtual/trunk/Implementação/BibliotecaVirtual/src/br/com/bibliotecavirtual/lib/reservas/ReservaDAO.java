@@ -22,6 +22,8 @@ public class ReservaDAO implements IReservaDAO {
 	private static final String BUSCARPORID = "buscarPorID";
 	private static final String BUSCARPORLIVRO = "buscarPorLivro";
 	private static final String BUSCARPORFUNCIONARIO = "buscarPorFuncionario";
+	private static final String EXISTELIVRO = "existeLivro";
+	
 	private static final String MAPEAMENTO = Reserva.class.getName();
 	private IConexao conexao;
 	
@@ -80,8 +82,6 @@ public class ReservaDAO implements IReservaDAO {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(id);
 		
-		
-		
 		Aluno aluno = null;
 		int alunoID = 0;
 		int funcionarioID = 0;
@@ -101,6 +101,21 @@ public class ReservaDAO implements IReservaDAO {
 		}
 		
 		return null;
+	}
+	
+	public boolean existeReserva(Livro livro) throws SQLException{
+		
+		int livroID = livro.getId();
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		parametros.add(livroID);
+		
+		ResultSet rs = this.conexao.executeQuery(MAPEAMENTO, ReservaDAO.EXISTELIVRO, parametros);
+		
+		if (rs.next()){
+			return true;
+		}
+		return false;
+		
 	}
 	
 	
