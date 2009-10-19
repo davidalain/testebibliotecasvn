@@ -43,7 +43,7 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
-		parametros.add(exemplar.getId());
+		parametros.add(exemplar.getLivro().getId());
 
 		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO,
 				BUSCAR_POR_EXEMPLAR, parametros);

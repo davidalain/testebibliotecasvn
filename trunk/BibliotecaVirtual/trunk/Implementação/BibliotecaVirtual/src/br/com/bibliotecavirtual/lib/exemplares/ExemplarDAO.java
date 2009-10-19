@@ -95,12 +95,10 @@ public class ExemplarDAO implements IExemplarDAO {
 
 		retorno = conexao.executeQuery(MAPEAMENTO, QUANTIDADE, parametros);
 
-		int cont = 0;
-
-		while (retorno.next()) {
-			cont++;
+		if (retorno.next()) {
+			return retorno.getInt("QUANTIDADE");
 		}
 
-		return cont;
+		return 0;
 	}
 }
