@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
-import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public interface IAluguelDAO 
 {
@@ -21,12 +21,12 @@ public interface IAluguelDAO
 	
 	public Collection<Aluguel> buscarPorAluno(Aluno aluno) throws SQLException;
 
-	public Collection<Aluguel> buscarPorExemplar(Exemplar exemplar) throws SQLException;
+	public Collection<Aluguel> buscarPorLivro(Livro livro) throws SQLException;
 	
 	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal) throws SQLException;
 	
 	public int buscarPorAlunoCount(Aluno aluno) throws SQLException;
 	
-	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException;
+	public int buscarPorLivroCount(Livro livro) throws SQLException;
 	
 }

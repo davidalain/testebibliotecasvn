@@ -2,6 +2,7 @@ package testes;
 
 import junit.framework.TestCase;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.livros.Livro;
 import fachada.Fachada;
 
 public class TesteAluguel extends TestCase {
@@ -24,6 +25,22 @@ public class TesteAluguel extends TestCase {
 			assertTrue(fachada
 					.validarSituacaoCadastralAluno(alunoAlvo.getCpf()));
 		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	public void testExemplarDisponivel()
+	{
+		Fachada fachada = Fachada.getInstance();
+		
+		try 
+		{
+			Livro livro = new Livro(1,"Título", "Autor1", "isbn1", "Area1", "2000", "Resumo1");
+			
+			
+			assertTrue(fachada.existeExemplarDisponivel(livro));
+		} 
+		catch (Exception e) {
 			fail();
 		}
 	}

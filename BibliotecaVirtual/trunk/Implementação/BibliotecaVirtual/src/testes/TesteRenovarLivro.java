@@ -11,7 +11,7 @@ public class TesteRenovarLivro extends TestCase {
 	
 	public void testLivroEstaAtrasadoVerdadeiro(){
 		ControladorLivrosAlugados cLivros = new ControladorLivrosAlugados();
-		Exemplar ex = new Exemplar();
+		Livro ex = new Livro();
 		Date devolucao = cLivros.dataDevolucao(ex);
 		Date atual = Date.this.getDate();
 		
@@ -20,7 +20,7 @@ public class TesteRenovarLivro extends TestCase {
 	
 	public void testLivroEstaAtrasadoFalso(){
 		ControladorLivrosAlugados cLivros = new ControladorLivrosAlugados();
-		Exemplar ex = new Exemplar();
+		Livro ex = new Livro();
 		Date devolucao = cLivros.dataDevolucao(ex);
 		Date atual = Date.this.getDate();
 		
@@ -45,8 +45,8 @@ public class TesteRenovarLivro extends TestCase {
 	
 	public void testBuscarMeusExemplaresOk(){
 		Aluno alunoAlvo = new Aluno();
-		Exemplar exemplarAlvo1 = new Exemplar();
-		Exemplar exemplarAlvo2 = new Exemplar();
+		Livro exemplarAlvo1 = new Livro();
+		Livro exemplarAlvo2 = new Livro();
 		controlador.alugar(alunoAlvo,exemplarAlvo1);
 		controlador.alugar(alunoAlvo,exemplarAlvo2);
 		assertTrue("Exemplar1 alugado", buscarMeusExemplares(alunoAlvo).size()==2);
@@ -55,14 +55,14 @@ public class TesteRenovarLivro extends TestCase {
 	
 	public void testBuscarMeusExemplaresVazio(){
 		Aluno alunoAlvo = new Aluno();
-		Exemplar exemplarAlvo1 = new Exemplar();
-		Exemplar exemplarAlvo2 = new Exemplar();
+		Livro exemplarAlvo1 = new Livro();
+		Livro exemplarAlvo2 = new Livro();
 		assertFalse("Não terá exemplar alugado", buscarMeusExemplares(alunoAlvo).size()==0);
 	}
 	
 	public void testRenovarExemplarPossivel(){
 		Aluno alunoAlvo = new Aluno();
-		Exemplar exemplarAlvo = new Exemplar();
+		Livro exemplarAlvo = new Livro();
 		aluno.setDivida(0);
 		controlador.alugar(alunoAlvo,exemplarAlvo);
 		assertTrue("Buscar meus exemplares contem o livro que eu quero renovar", buscarMeusExemplares(alunoAlvo).contains(exemplarAlvo));
@@ -74,8 +74,8 @@ public class TesteRenovarLivro extends TestCase {
 	public void testRenovarExemplarNaoPossivel(){
 		
 		Aluno alunoAlvo = new Aluno();
-		Exemplar exemplarAlvo = new Exemplar();
-		Exemplar exemplarNaoAlvo = new Exemplar();
+		Livro exemplarAlvo = new Livro();
+		Livro exemplarNaoAlvo = new Livro();
 		aluno.setDivida(2);
 		controlador.alugar(alunoAlvo,exemplarNaoAlvo);
 		assertFalse("Buscar meus exemplares não contem o livro que eu quero renovar", buscarMeusExemplares(alunoAlvo).contains(exemplarAlvo));
