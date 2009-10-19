@@ -6,6 +6,7 @@ import br.com.bibliotecavirtual.lib.alunos.IAlunoDAO;
 import br.com.bibliotecavirtual.lib.exemplares.IExemplarDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.IFuncionarioDAO;
 import br.com.bibliotecavirtual.lib.livros.ILivroDAO;
+import br.com.bibliotecavirtual.lib.reservas.IReservaDAO;
 import br.com.bibliotecavirtual.lib.sqlserver.SqlServerDAOFactory;
 
 public abstract class DAOFactory {
@@ -27,6 +28,8 @@ public abstract class DAOFactory {
 
 	public abstract IDevolucaoDAO getDevolucaoDAO();
 
+	public abstract IReservaDAO getReservaDAO();
+	
 	public static DAOFactory getDAOFactory() {
 		int whichFactory = SQLSERVER;
 

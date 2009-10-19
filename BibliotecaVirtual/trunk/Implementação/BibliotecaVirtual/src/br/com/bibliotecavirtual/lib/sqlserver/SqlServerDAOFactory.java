@@ -2,6 +2,8 @@ package br.com.bibliotecavirtual.lib.sqlserver;
 
 import br.com.bibliotecavirtual.devolucoes.DevolucaoDAO;
 import br.com.bibliotecavirtual.devolucoes.IDevolucaoDAO;
+import br.com.bibliotecavirtual.lib.alugueis.AluguelDAO;
+import br.com.bibliotecavirtual.lib.alugueis.IAluguelDAO;
 import br.com.bibliotecavirtual.lib.alunos.AlunoDAO;
 import br.com.bibliotecavirtual.lib.alunos.IAlunoDAO;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
@@ -12,6 +14,8 @@ import br.com.bibliotecavirtual.lib.funcionarios.FuncionarioDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.IFuncionarioDAO;
 import br.com.bibliotecavirtual.lib.livros.ILivroDAO;
 import br.com.bibliotecavirtual.lib.livros.LivroDAO;
+import br.com.bibliotecavirtual.lib.reservas.IReservaDAO;
+import br.com.bibliotecavirtual.lib.reservas.ReservaDAO;
 
 public class SqlServerDAOFactory extends DAOFactory {
 	public IConexao getConexao() {
@@ -38,6 +42,16 @@ public class SqlServerDAOFactory extends DAOFactory {
 
 	public IDevolucaoDAO getDevolucaoDAO() {
 		return new DevolucaoDAO();
+	}
+
+	@Override
+	public IAluguelDAO getAluguelDAO() {
+		return new AluguelDAO();
+	}
+
+	@Override
+	public IReservaDAO getReservaDAO() {
+		return new ReservaDAO();
 	}
 
 }
