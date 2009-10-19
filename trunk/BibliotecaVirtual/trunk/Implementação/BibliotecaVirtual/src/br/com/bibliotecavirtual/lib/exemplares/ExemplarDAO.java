@@ -32,7 +32,7 @@ public class ExemplarDAO implements IExemplarDAO {
 	public void atualizar(Exemplar exemplar) throws SQLException {
 		int id = exemplar.getId();
 		int idLivro = exemplar.getLivro().getId();
-		String estado = exemplar.getEstado();
+		int estado = exemplar.getEstado();
 
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
@@ -46,7 +46,7 @@ public class ExemplarDAO implements IExemplarDAO {
 
 	public void inserir(Exemplar exemplar) throws SQLException {
 		int idLivro = exemplar.getLivro().getId();
-		String estado = exemplar.getEstado();
+		int estado = exemplar.getEstado();
 
 		ArrayList<Object> parametros = new ArrayList<Object>();
 
@@ -80,7 +80,7 @@ public class ExemplarDAO implements IExemplarDAO {
 		if (retorno.next()) {
 			Livro livro = livros.buscarPorID(id);
 			exemplarRetorno = new Exemplar(retorno.getInt("id"), livro, retorno
-					.getString("estado"));
+					.getInt("estado"));
 
 		}
 
