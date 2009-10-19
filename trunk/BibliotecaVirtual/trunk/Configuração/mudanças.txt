@@ -1,3 +1,6 @@
+
 - No arquivo TesteAluguelLivro.java duas alterações foram feitas nos métodos testSituacaoFinanceiraNegativa() e testSituacaoFinanceiraOK().
 
-- No documento "Ferramentas" adicionado conteúdo. 
+- No documento "Ferramentas" adicionado conteúdo.
+
+- Na tabela de riscos, foi adicionado um novo risco.
