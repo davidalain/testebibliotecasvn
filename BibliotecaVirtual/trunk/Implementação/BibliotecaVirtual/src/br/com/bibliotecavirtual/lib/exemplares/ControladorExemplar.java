@@ -19,5 +19,9 @@ public class ControladorExemplar {
 		int idLivro = livro.getId();
 		return repositorioExemplares.buscarPorIDLivroCount(idLivro);
 	}
+	
+	public void cadastrar (Exemplar exemplar) throws SQLException{
+		repositorioExemplares.inserir(exemplar);
+	}
 
 }
