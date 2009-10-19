@@ -13,6 +13,8 @@ public interface IReservaDAO {
 	public void remover (String id) throws SQLException;
 	public void atualizar (Reserva reserva) throws SQLException;
 	public Reserva buscarPorID(int id) throws SQLException;
+	public boolean existeReserva(Livro livro) throws SQLException;
+
 
 
 }
