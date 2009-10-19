@@ -3,16 +3,21 @@ package br.com.bibliotecavirtual.lib.reservas;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import br.com.bibliotecavirtual.lib.alugueis.AluguelDAO;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
+import br.com.bibliotecavirtual.lib.alunos.AlunoDAO;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.Data;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
+import br.com.bibliotecavirtual.lib.funcionarios.FuncionarioDAO;
 import br.com.bibliotecavirtual.lib.livros.Livro;
+import br.com.bibliotecavirtual.lib.livros.LivroDAO;
 
 
 public class ReservaDAO implements IReservaDAO {
@@ -77,30 +82,57 @@ public class ReservaDAO implements IReservaDAO {
 		
 	}
 	
-	public Reserva buscarPorID(int id) throws SQLException{
+	private Reserva materializar (ResultSet rs) throws SQLException{
 		
-		ArrayList<Object> parametros = new ArrayList<Object>();
-		parametros.add(id);
+		AlunoDAO repositorioAluno = new AlunoDAO();
+		FuncionarioDAO repositorioFuncionario = new FuncionarioDAO();
+		LivroDAO repositorioLivro = new LivroDAO();
 		
-		Aluno aluno = null;
+		
 		int alunoID = 0;
 		int funcionarioID = 0;
 		int livroID = 0;
 		
+		Aluno aluno = null;
 		Funcionario funcionario = null;
-		Data date = null;
 		Livro livro = null;
+		String dataStr = null;
+		Data date = null;
 		
-		ResultSet rs = this.conexao.executeQuery(MAPEAMENTO, ReservaDAO.BUSCARPORID, parametros);
-		
-		while (rs.next()){
-		
+		if(rs.next()){
 			alunoID = rs.getInt("ALUNOID");
+			System.out.println(alunoID);
+			aluno = repositorioAluno.buscarPorID(alunoID);
+			
 			funcionarioID = rs.getInt("FUNCIONARIOID");
+			funcionario = repositorioFuncionario.buscarPorID(funcionarioID);
+			
 			livroID = rs.getInt("LIVROID");
+			livro = repositorioLivro.buscarPorID(livroID);
+			
+			dataStr = rs.getString("DATA");
+			try {
+				date = new Data(dataStr);
+			} 
+			catch (ParseException e) {
+				
+			}
 		}
 		
-		return null;
+		Reserva retorno = new Reserva(date, aluno, livro, funcionario);
+		return retorno;
+		
+	}
+	
+	public Reserva buscarPorID(int id) throws SQLException{
+		
+		Reserva retorno = new Reserva();
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		parametros.add(id);
+		
+		ResultSet rs = this.conexao.executeQuery(MAPEAMENTO, ReservaDAO.BUSCARPORID, parametros);
+		retorno = materializar(rs);
+		return retorno;
 	}
 	
 	public boolean existeReserva(Livro livro) throws SQLException{

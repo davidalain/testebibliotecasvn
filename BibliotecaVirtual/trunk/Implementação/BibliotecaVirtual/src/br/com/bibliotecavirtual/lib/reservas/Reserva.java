@@ -16,6 +16,9 @@ public class Reserva {
 	private Funcionario funcionario;
 	
 	
+	public Reserva() {
+		super();
+	}
 	public Reserva(Data data, Aluno aluno, Livro livro, Funcionario funcionario) {
 		super();
 		this.data = data;
