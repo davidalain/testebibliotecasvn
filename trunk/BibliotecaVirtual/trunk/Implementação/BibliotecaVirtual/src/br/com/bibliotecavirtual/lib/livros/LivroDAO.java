@@ -13,6 +13,8 @@ public class LivroDAO implements ILivroDAO{
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCAR = "buscar";
+	private static final String BUSCARID = "buscarID";
+	
 	private static final String MAPEAMENTO = Livro.class.getName();
 	private IConexao conexao;
 	
@@ -72,6 +74,22 @@ public class LivroDAO implements ILivroDAO{
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(isbn);
 		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR, parametros);
+		
+		if (rs.next()){
+			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 
+					rs.getString("ISBN"), rs.getString("AREA"), 
+					rs.getString("ANO"), rs.getString("RESUMO"));
+		}
+		return livroRetorno;
+	}
+
+	public Livro buscarPorID (int id) throws SQLException{
+		
+		Livro livroRetorno = null;
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		parametros.add(id);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR, parametros);
+		
 		if (rs.next()){
 			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 
 					rs.getString("ISBN"), rs.getString("AREA"), 
