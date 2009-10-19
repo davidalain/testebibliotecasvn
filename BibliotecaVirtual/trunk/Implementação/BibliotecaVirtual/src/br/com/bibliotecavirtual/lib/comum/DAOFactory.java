@@ -1,5 +1,6 @@
 package br.com.bibliotecavirtual.lib.comum;
 
+import br.com.bibliotecavirtual.devolucoes.IDevolucaoDAO;
 import br.com.bibliotecavirtual.lib.alunos.IAlunoDAO;
 import br.com.bibliotecavirtual.lib.exemplares.IExemplarDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.IFuncionarioDAO;
@@ -20,6 +21,8 @@ public abstract class DAOFactory {
 	public abstract ILivroDAO getLivroDAO();
 
 	public abstract IExemplarDAO getExemplarDAO();
+
+	public abstract IDevolucaoDAO getDevolucaoDAO();
 
 	public static DAOFactory getDAOFactory() {
 		int whichFactory = SQLSERVER;
