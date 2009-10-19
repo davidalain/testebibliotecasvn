@@ -101,7 +101,6 @@ public class ReservaDAO implements IReservaDAO {
 		
 		if(rs.next()){
 			alunoID = rs.getInt("ALUNOID");
-			System.out.println(alunoID);
 			aluno = repositorioAluno.buscarPorID(alunoID);
 			
 			funcionarioID = rs.getInt("FUNCIONARIOID");
