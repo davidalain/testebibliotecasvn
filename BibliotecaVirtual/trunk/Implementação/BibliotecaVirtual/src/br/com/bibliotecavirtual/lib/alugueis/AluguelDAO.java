@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
@@ -66,42 +67,8 @@ public class AluguelDAO implements IAluguelDAO
 		
 		if (retorno.next()) 
 		{
-			Aluguel aluguel = new Aluguel();
+			Aluguel aluguel = materializar(retorno);
 			
-			int idAluno = Integer.parseInt(retorno.getString("aluno"));
-			
-			int idFuncionario = Integer.parseInt(retorno.getString("funcionario"));
-			
-			int idExemplar = Integer.parseInt(retorno.getString("exemplar"));
-			
-			DateFormat formater = DateFormat.getDateInstance();
-			
-			Date dataAluguel = null;
-			
-			Date dataDevolucao = null;
-			try
-			{
-				dataAluguel = formater.parse(retorno.getString("dataAluguel"));
-				
-				dataDevolucao = formater.parse(retorno.getString("dataDevolucao"));	
-			}
-			catch (ParseException e) {}
-			
-			Aluno alunoEncontrado = DAOFactory.getDAOFactory().getAlunoDAO().buscarPorID(idAluno);
-			
-			Funcionario funcionarioEncontrado = DAOFactory.getDAOFactory().getFuncionarioDAO().buscarPorID(idFuncionario);
-			
-			Exemplar exemplarEncontrado = DAOFactory.getDAOFactory().getExemplarDAO().buscarPorID(idExemplar);
-			
-			aluguel.setAluno(alunoEncontrado);
-			
-			aluguel.setFuncionario(funcionarioEncontrado);
-			
-			aluguel.setExemplar(exemplarEncontrado);
-			
-			aluguel.setDataAluguel(dataAluguel);
-			
-			aluguel.setDataDevolucao(dataDevolucao);
 			
 			alugueisEncontrados.add(aluguel);
 		}
@@ -125,16 +92,16 @@ public class AluguelDAO implements IAluguelDAO
 		
 		while(retorno.next())
 		{
+			Aluguel aluguel = materializar(retorno);
 			
+			alugueisEncontrados.add(aluguel);
 		}
-		
 		
 		return alugueisEncontrados;
 	}
 
 	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.buscarPorExemplar(exemplar).size();
 	}
 
 	public Aluguel buscarPorID(int id) throws SQLException 
@@ -149,18 +116,36 @@ public class AluguelDAO implements IAluguelDAO
 		
 		while(retorno.next())
 		{
+			Aluguel aluguel = materializar(retorno);
 			
 			
+			aluguelEncontrado = aluguel;
 			
 		}
 		
 		return aluguelEncontrado;
 	}
 
-	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal) throws SQLException 
+	{
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		ArrayList<Aluguel> alugueisEncontrados = new  ArrayList<Aluguel>();
+		
+		parametros.add(dataInicial);
+		
+		parametros.add(dataFinal);
+		
+		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_PERIODO, parametros);
+		
+		while(retorno.next())
+		{
+			Aluguel aluguel = materializar(retorno);
+			
+			alugueisEncontrados.add(aluguel);
+		}
+		
+		return alugueisEncontrados;
 	}
 
 	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal)
@@ -201,7 +186,7 @@ public class AluguelDAO implements IAluguelDAO
 		Aluguel aluguelEncontrado = new Aluguel();
 		
 		
-		DateFormat formater = DateFormat.getDateInstance();
+		DateFormat formater = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.FRANCE);
 		
 		Date dataAluguel = null;
 		
@@ -237,16 +222,14 @@ public class AluguelDAO implements IAluguelDAO
 			aluguelEncontrado.setFuncionario(funcionario);
 			
 			aluguelEncontrado.setId(id);
-			
-			return aluguelEncontrado;
 		}
-		catch (ParseException e) {} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+			
+			
+		catch (ParseException e) {} 
+		catch (NumberFormatException e) {} 
 		
+		return aluguelEncontrado;
 		
 	}
 	
-
 }
