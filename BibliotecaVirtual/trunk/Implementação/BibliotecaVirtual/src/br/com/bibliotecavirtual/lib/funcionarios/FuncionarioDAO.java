@@ -50,7 +50,7 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 		ResultSet rs = conexao.executeQuery(MAPEAMENTO, FuncionarioDAO.BUSCARPORMATRICULAR, parametros);
 		Funcionario funcionarioRetorno = null;
 		if (rs.next()){
-			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"));
+			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"), rs.getInt("ID"));
 		}
 		return funcionarioRetorno;	
 	}
@@ -72,7 +72,7 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 		ResultSet rs = conexao.executeQuery(MAPEAMENTO, FuncionarioDAO.BUSCARPORID, parametros);
 		Funcionario funcionarioRetorno = null;
 		if (rs.next()){
-			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"));
+			funcionarioRetorno = new Funcionario(rs.getString("NOME"), rs.getString("matricula"), rs.getInt("ID"));
 		}
 		return funcionarioRetorno;
 	}

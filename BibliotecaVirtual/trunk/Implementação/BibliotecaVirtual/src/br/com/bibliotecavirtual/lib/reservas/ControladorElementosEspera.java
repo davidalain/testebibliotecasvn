@@ -13,23 +13,23 @@ public class ControladorElementosEspera {
 	}
 
 	public boolean possuiFilaEspera(Livro livro) {
-		ElementoReserva elemento = new ElementoReserva(null, "", livro.getIsbn());
+		Reserva elemento = new Reserva(null, "", livro.getIsbn());
 		return (repositorio.buscar(elemento) != null);
 	}
 
-	public void cadastrar(ElementoReserva fila) {
+	public void cadastrar(Reserva fila) {
 
 	}
 
-	public void remover(ElementoReserva fila) {
+	public void remover(Reserva fila) {
 
 	}
 
-	public boolean existe(ElementoReserva fila) {
+	public boolean existe(Reserva fila) {
 
 	}
 
-	public List<ElementoReserva> procurar(String livroId) {
+	public List<Reserva> procurar(String livroId) {
 
 	}
 

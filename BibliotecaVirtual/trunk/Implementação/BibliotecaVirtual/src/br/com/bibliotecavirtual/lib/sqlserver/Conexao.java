@@ -92,7 +92,7 @@ public class Conexao implements IConexao {
 			indice++;
 		}
 
-		abrirConexao();
+		this.abrirConexao();
 
 		comando.executeUpdate();
 
@@ -129,7 +129,7 @@ public class Conexao implements IConexao {
 			indice++;
 		}
 
-		this.abrirConexao();
+//		this.abrirConexao();
 
 		ResultSet retorno = comando.executeQuery();
 
