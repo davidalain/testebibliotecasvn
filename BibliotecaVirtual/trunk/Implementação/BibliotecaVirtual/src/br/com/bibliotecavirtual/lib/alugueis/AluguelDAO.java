@@ -1,18 +1,24 @@
 package br.com.bibliotecavirtual.lib.alugueis;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+
 
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
+import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 
 public class AluguelDAO implements IAluguelDAO
 {
 	private static final String INSERIR = "inserir";
-	private static final String REMOVER_POR_ID = "removerPorID";
+	private static final String REMOVER = "removerPorID";
 	private static final String ATUALIZAR = "atualizar";
 	private static final String MAPEAMENTO = Aluguel.class.getName();
 	private static final String BUSCAR_POR_ID = "buscarPorID";
@@ -29,47 +35,218 @@ public class AluguelDAO implements IAluguelDAO
 		conexao = factory.getConexao();
 	}
 	
-	public void atualizar(Aluguel aluguel) 
+	public void atualizar(Aluguel aluguel) throws SQLException 
 	{
 
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		
-		parametros
+		parametros.add(aluguel.getExemplar().getId());
+		
+		parametros.add(aluguel.getAluno().getId());
+		
+		parametros.add(aluguel.getFuncionario());
+		
+		parametros.add(aluguel.getDataAluguel());
+		
+		parametros.add(aluguel.getDataDevolucao());
+		
+		this.conexao.executeNonQuery(MAPEAMENTO, ATUALIZAR, parametros);
 	}
 
-	public Collection<Aluguel> buscarPorAluno(Aluno aluno) {
+	public Collection<Aluguel> buscarPorAluno(Aluno aluno)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		ArrayList<Aluguel> alugueisEncontrados = new  ArrayList<Aluguel>();
+		
+		parametros.add(aluno.getId());
+		
+		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_ALUNO, parametros);
+		
+		if (retorno.next()) 
+		{
+			Aluguel aluguel = new Aluguel();
+			
+			int idAluno = Integer.parseInt(retorno.getString("aluno"));
+			
+			int idFuncionario = Integer.parseInt(retorno.getString("funcionario"));
+			
+			int idExemplar = Integer.parseInt(retorno.getString("exemplar"));
+			
+			DateFormat formater = DateFormat.getDateInstance();
+			
+			Date dataAluguel = null;
+			
+			Date dataDevolucao = null;
+			try
+			{
+				dataAluguel = formater.parse(retorno.getString("dataAluguel"));
+				
+				dataDevolucao = formater.parse(retorno.getString("dataDevolucao"));	
+			}
+			catch (ParseException e) {}
+			
+			Aluno alunoEncontrado = DAOFactory.getDAOFactory().getAlunoDAO().buscarPorID(idAluno);
+			
+			Funcionario funcionarioEncontrado = DAOFactory.getDAOFactory().getFuncionarioDAO().buscarPorID(idFuncionario);
+			
+			Exemplar exemplarEncontrado = DAOFactory.getDAOFactory().getExemplarDAO().buscarPorID(idExemplar);
+			
+			aluguel.setAluno(alunoEncontrado);
+			
+			aluguel.setFuncionario(funcionarioEncontrado);
+			
+			aluguel.setExemplar(exemplarEncontrado);
+			
+			aluguel.setDataAluguel(dataAluguel);
+			
+			aluguel.setDataDevolucao(dataDevolucao);
+			
+			alugueisEncontrados.add(aluguel);
+		}
+		
+		return alugueisEncontrados;
+	}
+
+	public int buscarPorAlunoCount(Aluno aluno) throws SQLException {
+		return this.buscarPorAluno(aluno).size();
+	}
+
+	public Collection<Aluguel> buscarPorExemplar(Exemplar exemplar)throws SQLException 
+	{
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		ArrayList<Aluguel> alugueisEncontrados = new  ArrayList<Aluguel>();
+		
+		parametros.add(exemplar.getId());
+		
+		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_EXEMPLAR, parametros);
+		
+		while(retorno.next())
+		{
+			
+		}
+		
+		
+		return alugueisEncontrados;
+	}
+
+	public int buscarPorExemplarCount(Exemplar exemplar) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Aluguel buscarPorID(int id) throws SQLException 
+	{
+		Aluguel aluguelEncontrado = new Aluguel();
+		
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		parametros.add(id);
+		
+		ResultSet retorno = this.conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_ID, parametros);
+		
+		while(retorno.next())
+		{
+			
+			
+			
+		}
+		
+		return aluguelEncontrado;
+	}
+
+	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal)
+			throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void buscarPorID(int id) {
+	public int buscarPorPeriodoCount(Date dataInicial, Date dataFinal)
+			throws SQLException {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void inserir(Aluguel aluguel) throws SQLException 
+	{
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		parametros.add(aluguel.getExemplar().getId());
+		
+		parametros.add(aluguel.getAluno().getId());
+		
+		parametros.add(aluguel.getFuncionario());
+		
+		parametros.add(aluguel.getDataAluguel());
+		
+		parametros.add(aluguel.getDataDevolucao());
+		
+		this.conexao.executeNonQuery(MAPEAMENTO, INSERIR, parametros);
+	}
+
+	public void remover(int id) throws SQLException 
+	{
+		ArrayList<Object> parametros = new ArrayList<Object>();
+		
+		parametros.add(id);
+		
+		this.conexao.executeNonQuery(MAPEAMENTO, REMOVER, parametros);
 		
 	}
-
-	public Collection<Aluguel> buscarPorPeriodo(Date dataInicial, Date dataFinal) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void inserir(Aluguel aluguel) {
-		// TODO Auto-generated method stub
+	
+	private Aluguel materializar(ResultSet retorno) throws SQLException
+	{
+		Aluguel aluguelEncontrado = new Aluguel();
+		
+		
+		DateFormat formater = DateFormat.getDateInstance();
+		
+		Date dataAluguel = null;
+		
+		Date dataDevolucao = null;
+		try
+		{
+			int id = Integer.parseInt(retorno.getString("id"));
+			
+			int exemplarId = Integer.parseInt(retorno.getString("exemplar"));
+			
+			int alunoId = Integer.parseInt(retorno.getString("aluno"));
+			
+			int funcionarioId = Integer.parseInt(retorno.getString("funcionario"));
+			
+			dataAluguel = formater.parse(retorno.getString("dataAluguel"));
+			
+			dataDevolucao = formater.parse(retorno.getString("dataDevolucao"));	
+			
+			Exemplar exemplar = DAOFactory.getDAOFactory().getExemplarDAO().buscarPorID(exemplarId);
+			
+			Aluno aluno = DAOFactory.getDAOFactory().getAlunoDAO().buscarPorID(alunoId);
+			
+			Funcionario funcionario = DAOFactory.getDAOFactory().getFuncionarioDAO().buscarPorID(funcionarioId);
+			
+			aluguelEncontrado.setAluno(aluno);
+			
+			aluguelEncontrado.setDataAluguel(dataAluguel);
+			
+			aluguelEncontrado.setDataDevolucao(dataDevolucao);
+			
+			aluguelEncontrado.setExemplar(exemplar);
+			
+			aluguelEncontrado.setFuncionario(funcionario);
+			
+			aluguelEncontrado.setId(id);
+			
+			return aluguelEncontrado;
+		}
+		catch (ParseException e) {} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
 		
 	}
-
-	public void remover(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Collection<Aluguel> buscarPorAluno(Aluguel aluguel) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Collection<Aluguel> buscarPorExemplar(Exemplar exemplar) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
