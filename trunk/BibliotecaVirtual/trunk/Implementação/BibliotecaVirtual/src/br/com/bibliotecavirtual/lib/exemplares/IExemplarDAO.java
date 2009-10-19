@@ -13,5 +13,5 @@ public interface IExemplarDAO {
 
 	public boolean existe(int id) throws SQLException;
 
-	public int buscarPorIDLivroCont(int idLivro) throws SQLException;
+	public int buscarPorIDLivroCount(int idLivro) throws SQLException;
 }
