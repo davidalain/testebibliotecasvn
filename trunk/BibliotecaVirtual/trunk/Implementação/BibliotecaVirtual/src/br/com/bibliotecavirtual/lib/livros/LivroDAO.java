@@ -12,7 +12,7 @@ public class LivroDAO implements ILivroDAO{
 	private static final String INSERIR = "inserir";
 	private static final String REMOVER = "remover";
 	private static final String ATUALIZAR = "atualizar";
-	private static final String BUSCAR = "buscar";
+	private static final String BUSCARPORISBN = "buscarPorISBN";
 	private static final String BUSCARPORID = "buscarPorID";
 	
 	private static final String MAPEAMENTO = Livro.class.getName();
@@ -68,12 +68,12 @@ public class LivroDAO implements ILivroDAO{
 		conexao.executeNonQuery(MAPEAMENTO, LivroDAO.ATUALIZAR, parametros);
 	}
 	
-	public Livro buscar (String isbn) throws SQLException{
+	public Livro buscarPorISBN (String isbn) throws SQLException{
 	
 		Livro livroRetorno = null;
 		ArrayList<Object> parametros = new ArrayList<Object>();
 		parametros.add(isbn);
-		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCAR, parametros);
+		ResultSet rs = conexao.executeQuery(MAPEAMENTO, LivroDAO.BUSCARPORISBN, parametros);
 		
 		if (rs.next()){
 			livroRetorno = new Livro(rs.getInt("ID"),rs.getString("TITULO"), rs.getString("AUTOR"), 
@@ -100,7 +100,7 @@ public class LivroDAO implements ILivroDAO{
 	}
 	
 	public boolean existe (String isbn) throws SQLException{
-		return this.buscar(isbn) != null;
+		return this.buscarPorISBN(isbn) != null;
 	}
 	
 	
