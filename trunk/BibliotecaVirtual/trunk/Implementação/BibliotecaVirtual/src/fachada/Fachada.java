@@ -39,7 +39,6 @@ public class Fachada {
 
 	public boolean existeExemplarDisponivel(Exemplar exemplar)
 			throws SQLException {
-		int idLivro = exemplar.getLivro().getId();
 		int numExemplares = controladorExemplar.quantidadeExemplares(exemplar);
 		int numAlugueis = controladorAluguel.quantidade(exemplar);
 		int numDevolucoes = controladorDevolucao.quantidadeDevolucao(exemplar);
