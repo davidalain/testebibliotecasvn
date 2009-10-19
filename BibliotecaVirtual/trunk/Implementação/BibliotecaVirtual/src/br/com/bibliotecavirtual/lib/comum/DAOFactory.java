@@ -3,6 +3,7 @@ package br.com.bibliotecavirtual.lib.comum;
 import br.com.bibliotecavirtual.lib.alunos.IAlunoDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.FuncionarioDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.IFuncionarioDAO;
+import br.com.bibliotecavirtual.lib.livros.ILivroDAO;
 import br.com.bibliotecavirtual.lib.sqlserver.SqlServerDAOFactory;
 
 	public abstract class DAOFactory {
@@ -17,7 +18,7 @@ import br.com.bibliotecavirtual.lib.sqlserver.SqlServerDAOFactory;
 		  
 		  public abstract IFuncionarioDAO getFuncionarioDAO();
 		
-
+		  public abstract ILivroDAO getLivroDAO();
 
 		  public static DAOFactory getDAOFactory() 
 		  {

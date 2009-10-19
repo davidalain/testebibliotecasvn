@@ -8,6 +8,8 @@ import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
 import br.com.bibliotecavirtual.lib.funcionarios.FuncionarioDAO;
 import br.com.bibliotecavirtual.lib.funcionarios.IFuncionarioDAO;
+import br.com.bibliotecavirtual.lib.livros.ILivroDAO;
+import br.com.bibliotecavirtual.lib.livros.LivroDAO;
 
 public class SqlServerDAOFactory extends DAOFactory
 {	  
@@ -18,12 +20,17 @@ public class SqlServerDAOFactory extends DAOFactory
 	
 	@Override
 	public IAlunoDAO getAlunoDAO() {
-		// TODO Auto-generated method stub
 		return new AlunoDAO();
 	}
 	public IFuncionarioDAO getFuncionarioDAO(){
 		return new FuncionarioDAO();
 	}
+
+	@Override
+	public ILivroDAO getLivroDAO() {
+		return new LivroDAO();
+	}
+	
 	  
 
 
