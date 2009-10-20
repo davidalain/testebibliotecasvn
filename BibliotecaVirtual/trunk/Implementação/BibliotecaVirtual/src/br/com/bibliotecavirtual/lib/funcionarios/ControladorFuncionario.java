@@ -15,7 +15,7 @@ public class ControladorFuncionario {
 	}
 	
 	
-	public void Cadastrar(Funcionario funcionario) throws SQLException{
+	public void cadastrar(Funcionario funcionario) throws SQLException{
 		if (this.repositorioFuncionario.existe(funcionario.getCpf())){
 			
 		}

@@ -12,7 +12,9 @@ import br.com.bibliotecavirtual.lib.devolucoes.ControladorDevolucao;
 import br.com.bibliotecavirtual.lib.exemplares.ControladorExemplar;
 import br.com.bibliotecavirtual.lib.exemplares.Exemplar;
 import br.com.bibliotecavirtual.lib.exemplares.ExemplarNaoDisponivelException;
+import br.com.bibliotecavirtual.lib.funcionarios.ControladorFuncionario;
 import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
+import br.com.bibliotecavirtual.lib.livros.ControladorLivros;
 import br.com.bibliotecavirtual.lib.livros.Livro;
 
 public class Fachada {
@@ -22,12 +24,17 @@ public class Fachada {
 	private ControladorExemplar controladorExemplar;
 	private ControladorDevolucao controladorDevolucao;
 	private ControladorAluguel controladorAluguel;
-
+	private ControladorFuncionario controladorFuncionario;
+	private ControladorLivros controladorLivro;
+	
 	private Fachada() {
 		this.controladorAluno = new ControladorAluno();
 		this.controladorExemplar = new ControladorExemplar();
 		this.controladorDevolucao = new ControladorDevolucao();
 		this.controladorAluguel = new ControladorAluguel();
+		this.controladorFuncionario = new ControladorFuncionario();
+		this.controladorLivro = new ControladorLivros();
+		
 	}
 
 	public static Fachada getInstance() {
@@ -69,7 +76,7 @@ public class Fachada {
 		
 		Aluguel novoluguel = new Aluguel();
 		
-		Data dataAluguel = new Data();
+		Data dataAluguel = new Data(new Date().toString());
 		
 		Data dataDevolucao = controladorDevolucao.calcularDataDevolucao(dataAluguel);
 		
@@ -84,6 +91,18 @@ public class Fachada {
 		novoluguel.setFuncionario(funcionario);
 		
 		this.controladorAluguel.alugar(novoluguel);
+	}
+	
+	public void cadastrarFuncionario (Funcionario funcionario) throws SQLException{
+		this.controladorFuncionario.cadastrar(funcionario);
+	}
+	
+	public void cadastrarLivro (Livro livro) throws SQLException{
+		this.controladorLivro.cadastrar(livro);
+	}
+	
+	public void cadastrarExemplar (Exemplar exemplar) throws SQLException{
+		this.controladorExemplar.cadastrar(exemplar);
 	}
 
 }
