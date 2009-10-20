@@ -1,6 +1,7 @@
 package fachada;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 
 import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
@@ -26,7 +27,7 @@ public class Fachada {
 	private ControladorAluguel controladorAluguel;
 	private ControladorFuncionario controladorFuncionario;
 	private ControladorLivros controladorLivro;
-	
+
 	private Fachada() {
 		this.controladorAluno = new ControladorAluno();
 		this.controladorExemplar = new ControladorExemplar();
@@ -34,7 +35,7 @@ public class Fachada {
 		this.controladorAluguel = new ControladorAluguel();
 		this.controladorFuncionario = new ControladorFuncionario();
 		this.controladorLivro = new ControladorLivros();
-		
+
 	}
 
 	public static Fachada getInstance() {
@@ -53,55 +54,54 @@ public class Fachada {
 		this.controladorAluno.cadastrarAluno(a);
 	}
 
-	public boolean existeExemplarDisponivel(Livro livro)
-			throws SQLException {
+	public boolean existeExemplarDisponivel(Livro livro) throws SQLException {
 		int numExemplares = controladorExemplar.quantidadeExemplares(livro);
 		int numAlugueis = controladorAluguel.quantidade(livro);
 		int numDevolucoes = controladorDevolucao.quantidadeDevolucao(livro);
 
 		return (numAlugueis - numDevolucoes < numExemplares);
 	}
-	
-	public void alugar(Aluno aluno, Funcionario funcionario, Exemplar exemplar) throws SQLException, ExemplarNaoDisponivelException
-	{
-		if(!existeExemplarDisponivel(exemplar.getLivro()))
-		{
+
+	public void alugar(Aluno aluno, Funcionario funcionario, Exemplar exemplar)
+			throws SQLException, ExemplarNaoDisponivelException, ParseException {
+		if (!existeExemplarDisponivel(exemplar.getLivro())) {
 			throw new ExemplarNaoDisponivelException();
 		}
-		
-		if(this.validarSituacaoCadastralAluno(aluno.getCpf()))
-		{
-			
+
+		if (this.validarSituacaoCadastralAluno(aluno.getCpf())) {
+
 		}
-		
+
 		Aluguel novoluguel = new Aluguel();
-		
+
 		Data dataAluguel = new Data(new Date().toString());
-		
-		Data dataDevolucao = controladorDevolucao.calcularDataDevolucao(dataAluguel);
-		
+
+		Data dataDevolucao = controladorDevolucao
+				.calcularDataDevolucao(dataAluguel);
+
 		novoluguel.setAluno(aluno);
-		
+
 		novoluguel.setDataAluguel(dataAluguel);
-		
+
 		novoluguel.setDataDevolucao(dataDevolucao);
-		
+
 		novoluguel.setExemplar(exemplar);
-		
+
 		novoluguel.setFuncionario(funcionario);
-		
+
 		this.controladorAluguel.alugar(novoluguel);
 	}
-	
-	public void cadastrarFuncionario (Funcionario funcionario) throws SQLException{
+
+	public void cadastrarFuncionario(Funcionario funcionario)
+			throws SQLException {
 		this.controladorFuncionario.cadastrar(funcionario);
 	}
-	
-	public void cadastrarLivro (Livro livro) throws SQLException{
+
+	public void cadastrarLivro(Livro livro) throws SQLException {
 		this.controladorLivro.cadastrar(livro);
 	}
-	
-	public void cadastrarExemplar (Exemplar exemplar) throws SQLException{
+
+	public void cadastrarExemplar(Exemplar exemplar) throws SQLException {
 		this.controladorExemplar.cadastrar(exemplar);
 	}
 
