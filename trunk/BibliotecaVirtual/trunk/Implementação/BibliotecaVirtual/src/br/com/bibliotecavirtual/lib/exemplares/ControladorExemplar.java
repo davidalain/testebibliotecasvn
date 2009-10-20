@@ -24,5 +24,8 @@ public class ControladorExemplar {
 	{
 		return this.repositorioExemplares.buscarPorLivro(livro);
 	}
+	public void cadastrar (Exemplar exemplar) throws SQLException{
+		this.repositorioExemplares.inserir(exemplar);
+	}
 
 }
