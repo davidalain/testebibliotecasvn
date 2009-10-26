@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>  
+  <entry key="inserir">INSERT INTO [biblioteca].[dbo].[RES_RESERVA]([LIV_ID],[FUN_ID],[RES_DT],[ALU_ID]) VALUES (?,?,CONVERT(DATETIME,?, 103),?)</entry>
+  <entry key="remover">DELETE FROM [biblioteca].[dbo].[RES_RESERVA] WHERE RES_ID = ?</entry> 
+  <entry key="atualizar">UPDATE [biblioteca].[dbo].[RES_RESERVA] SET [LIV_ID] = ?,[FUN_ID] = ?,[RES_DT] = ?,[ALU_ID] = ? WHERE EXP_ID = ?</entry> 
+  <entry key="buscarPorLivro">SELECT [RES_ID],[LIV_ID],[FUN_ID],[RES_DT],[ALU_ID] FROM [biblioteca].[dbo].[RES_RESERVA] WHERE LIV_ID = ?</entry>
+  <entry key="buscarPorFuncionario">SELECT [RES_ID],[LIV_ID],[FUN_ID],[RES_DT],[ALU_ID] FROM [biblioteca].[dbo].[RES_RESERVA] WHERE FUN_ID = ?</entry>
+  <entry key="buscarPorID">SELECT [RES_ID] AS ID,[LIV_ID] AS LIVROID,[FUN_ID] AS FUNCIONARIOID,[RES_DT] AS DATA,[ALU_ID] AS ALUNOID FROM [biblioteca].[dbo].[RES_RESERVA] WHERE RES_ID = ?</entry>
+  <entry key="existeLivro">SELECT 1 FROM [biblioteca].[dbo].[RES_RESERVA] WHERE LIV_ID = ?</entry>
+  
+  
+</properties>
+
+  
+  

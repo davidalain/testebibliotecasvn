@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties><comment>no</comment> 
+  <entry key="inserir">INSERT INTO [biblioteca].[dbo].[FUN_FUNCIONARIO] ([FUN_NM],[FUN_CD_MATRICULA]) VALUES (?,?)</entry>
+  <entry key="remover">DELETE FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE [FUN_CD_MATRICULA] = ?</entry> 
+  <entry key="atualizar">UPDATE [biblioteca].[dbo].[FUN_FUNCIONARIO] SET [FUN_NM] = ? ,[FUN_CD_MATRICULA] = ? WHERE [FUN_CD_MATRICULA] = ?</entry> 
+  <entry key="buscarPorMatricula">SELECT [FUN_ID] AS ID,[FUN_NM] AS NOME,[FUN_CD_MATRICULA] AS MATRICULA FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE FUN_CD_MATRICULA = ?</entry> 
+  <entry key="buscarPorID">SELECT [FUN_ID] AS ID,[FUN_NM] AS NOME,[FUN_CD_MATRICULA] AS MATRICULA FROM [biblioteca].[dbo].[FUN_FUNCIONARIO] WHERE FUN_ID = ?</entry> 
+
+</properties>

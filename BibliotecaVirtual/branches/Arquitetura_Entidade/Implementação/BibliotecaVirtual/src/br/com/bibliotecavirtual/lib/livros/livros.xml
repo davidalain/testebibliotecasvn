@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>  
+  <entry key="inserir">  INSERT INTO [biblioteca].[dbo].[LIV_LIVRO] ([LIV_NM_TITULO],[LIV_NM_AUTOR],[LIV_SC_AREA],[LIV_NU_ANO],[LIV_DS_RESUMO],[LIV_NM_ISBN]) VALUES (?,?,?,?,?,?)</entry>
+  <entry key="remover">DELETE FROM [biblioteca].[dbo].[LIV_LIVRO] WHERE LIV_NM_ISBN = ?</entry> 
+  <entry key="atualizar">UPDATE [biblioteca].[dbo].[LIV_LIVRO] SET [LIV_NM_TITULO] = ? ,[LIV_NM_AUTOR] = ? ,[LIV_SC_AREA] = ? ,[LIV_NU_ANO] = ?,[LIV_DS_RESUMO] = ?,[LIV_NM_ISBN] = ? WHERE LIV_NM_ISBN = ?</entry> 
+  <entry key="buscarPorISBN">SELECT [LIV_ID] AS ID,[LIV_NM_TITULO] AS TITULO,[LIV_NM_AUTOR] AS AUTOR,[LIV_SC_AREA] AS AREA,[LIV_NU_ANO] AS ANO,[LIV_DS_RESUMO] AS RESUMO,[LIV_NM_ISBN] AS ISBN FROM [biblioteca].[dbo].[LIV_LIVRO] WHERE LIV_NM_ISBN = ?</entry>
+  <entry key="buscarPorID">SELECT [LIV_ID] AS ID,[LIV_NM_TITULO] AS TITULO,[LIV_NM_AUTOR] AS AUTOR,[LIV_SC_AREA] AS AREA,[LIV_NU_ANO] AS ANO,[LIV_DS_RESUMO] AS RESUMO,[LIV_NM_ISBN] AS ISBN FROM [biblioteca].[dbo].[LIV_LIVRO] WHERE LIV_ID = ?</entry>
+</properties>
+  
+  
