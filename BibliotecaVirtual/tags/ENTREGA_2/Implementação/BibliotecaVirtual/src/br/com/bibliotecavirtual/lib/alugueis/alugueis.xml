@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties><comment>no</comment> 
+  <entry key="inserir">INSERT INTO [biblioteca].[dbo].[ALG_ALUGUEL]([EXP_ID],[ALN_ID],[FUN_ID],[ALG_DT],[ALG_DT_DEVOLUCAO])VALUES(?,?,?,?,?)</entry>
+  <entry key="remover">DELETE FROM [biblioteca].[dbo].[ALG_ALUGUEL] WHERE ALG_ID = ?</entry> 
+  <entry key="atualizar">UPDATE [biblioteca].[dbo].[ALG_ALUGUEL] SET [EXP_ID] = ?,[ALN_ID] = ?,[FUN_ID] = ?,[ALG_DT] = ?,[ALG_DT_DEVOLUCAO] = ? WHERE ALG_ID = ?</entry> 
+  <entry key="buscar">SELECT * FROM [biblioteca].[dbo].[ALG_ALUGUEL] WHERE ALG_ID = ?</entry> 
+  <entry key="buscarPorExemplar">SELECT  ALG.[ALG_ID] AS id, ALG.[EXP_ID] AS exemplar, ALG.[ALN_ID] AS aluno, ALG.[FUN_ID] AS funcionario, ALG.[ALG_DT] AS dataAluguel, ALG.[ALG_DT_DEVOLUCAO] AS dataDevolucao FROM [ALG_ALUGUEL] AS ALG INNER JOIN [EXP_EXEMPLAR] AS EX ON EX.[EXP_ID] = ALG.[EXP_ID] INNER JOIN [LIV_LIVRO] AS LIV ON LIV.[LIV_ID] = EX.[LIV_ID] WHERE EX.[LIV_ID] = ? </entry> 
+  </properties>

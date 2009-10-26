@@ -1,0 +1,8 @@
+
+- No arquivo TesteAluguelLivro.java duas alterações foram feitas nos métodos testSituacaoFinanceiraNegativa() e testSituacaoFinanceiraOK().
+
+- No documento "Ferramentas" adicionado driver para Bd.
+
+- No documento "Ferramentas" adicionado ferramenta para auxiliar no uso do Bd.
+
+- Na tabela de riscos, foi adicionado um novo risco.
