@@ -9,11 +9,7 @@ import br.com.bibliotecavirtual.lib.comum.IConexao;
 
 public class AlunoDAO implements IAlunoDAO {
 
-	private static final String INSERIR = "inserir";
-	private static final String REMOVER = "removerPorID";
-	private static final String ATUALIZAR = "atualizar";
 	private static final String BUSCAR_POR_MATRICULA = "buscarPorMatricula";
-	private static final String BUSCAR_POR_ID = "buscarPorID";
 	private static final String MAPEAMENTO = Aluno.class.getName();
 	private static final String REMOVER_POR_MATRICULA = "removerPorMatricula";
 	private IConexao conexao;
@@ -22,7 +18,6 @@ public class AlunoDAO implements IAlunoDAO {
 
 	public AlunoDAO() {
 		DAOFactory factory = DAOFactory.getDAOFactory();
-
 		conexao = factory.getConexao();
 
 	}
@@ -38,8 +33,7 @@ public class AlunoDAO implements IAlunoDAO {
 		parametros.add(email);
 		parametros.add(matricula);
 
-		this.conexao
-		.executeNonQuery(MAPEAMENTO, AlunoDAO.ATUALIZAR, parametros);
+		this.conexao.executeNonQuery(MAPEAMENTO, "ATUALIZAR", parametros);
 
 	}
 
@@ -54,7 +48,7 @@ public class AlunoDAO implements IAlunoDAO {
 		parametros.add(email);
 		parametros.add(matricula);
 
-		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.INSERIR, parametros);
+		conexao.executeNonQuery(MAPEAMENTO, "INSERIR", parametros);
 
 	}
 
@@ -67,15 +61,16 @@ public class AlunoDAO implements IAlunoDAO {
 
 		parametros.add(id);
 
-		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_ID, parametros);
+		retorno = conexao.executeQuery(MAPEAMENTO, "BUSCAR", parametros);
 
 		if (retorno.next()) {
-			alunoRetorno = new Aluno(retorno.getInt("ID"),retorno.getString("LOGIN"), 
-					retorno.getString("MATRICULA"), retorno.getString("EMAIL"));
+			alunoRetorno = new Aluno(retorno.getInt("ID"), retorno
+					.getString("LOGIN"), retorno.getString("MATRICULA"),
+					retorno.getString("EMAIL"));
 		}
 
 		return alunoRetorno;
-	
+
 	}
 
 	public Aluno buscarPorMatricula(String matricula) throws SQLException {
@@ -88,11 +83,13 @@ public class AlunoDAO implements IAlunoDAO {
 
 		parametros.add(matricula);
 
-		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_MATRICULA, parametros);
+		retorno = conexao.executeQuery(MAPEAMENTO, BUSCAR_POR_MATRICULA,
+				parametros);
 
 		if (retorno.next()) {
-			alunoRetorno = new Aluno(retorno.getInt("ID"),retorno.getString("LOGIN"), 
-					retorno.getString("MATRICULA"), retorno.getString("EMAIL"));
+			alunoRetorno = new Aluno(retorno.getInt("ID"), retorno
+					.getString("LOGIN"), retorno.getString("MATRICULA"),
+					retorno.getString("EMAIL"));
 		}
 
 		return alunoRetorno;
@@ -103,7 +100,7 @@ public class AlunoDAO implements IAlunoDAO {
 
 		parametros.add(id);
 
-		conexao.executeNonQuery(MAPEAMENTO, AlunoDAO.REMOVER, parametros);
+		conexao.executeNonQuery(MAPEAMENTO, "REMOVER", parametros);
 	}
 
 	public boolean existe(String matricula) throws SQLException {
