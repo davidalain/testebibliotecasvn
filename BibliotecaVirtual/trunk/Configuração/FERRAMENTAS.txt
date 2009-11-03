@@ -29,3 +29,6 @@ Driver para acesso a banco de dados:
 
 Ferramentas de auxilio para o uso do Banco de Dado:
    - Microsoft SQL Server Management Studio Express
+
+Ferramenta para modelagem e confecção de diagramas:
+   - JUDE version 5
