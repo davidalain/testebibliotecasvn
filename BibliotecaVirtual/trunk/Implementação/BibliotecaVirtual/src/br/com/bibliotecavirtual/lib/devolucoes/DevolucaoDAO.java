@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-import br.com.bibliotecavirtual.lib.alugueis.Aluguel;
 import br.com.bibliotecavirtual.lib.alunos.Aluno;
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.IConexao;
+import br.com.bibliotecavirtual.lib.funcionarios.Funcionario;
 import br.com.bibliotecavirtual.lib.livros.Livro;
-
 
 public class DevolucaoDAO implements IDevolucaoDAO {
 
@@ -23,22 +22,6 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 
 		conexao = factory.getConexao();
-	}
-
-	public void atualizar(Aluguel aluguel) throws SQLException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public int buscarPorAlunoCount(Aluguel aluguel) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Collection<Devolucao> buscarPorLivro(Livro livro)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public int buscarPorLivroCount(Livro livro) throws SQLException {
@@ -53,12 +36,6 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 			return retorno.getInt("QUANTIDADE");
 		}
 		return 0;
-	}
-
-	public Collection<Devolucao> buscarPorFuncionario(Aluno aluno)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void buscarPorID(int id) throws SQLException {
@@ -78,14 +55,41 @@ public class DevolucaoDAO implements IDevolucaoDAO {
 		return 0;
 	}
 
-	public void inserir(Aluguel aluguel) throws SQLException {
-		// TODO Auto-generated method stub
+	public void inserir(Devolucao devolucao) throws SQLException {
+		ArrayList<Object> parametros = new ArrayList<Object>();
 
+		parametros.add(devolucao.getAluguel());
+		parametros.add(devolucao.getData());
+		parametros.add(devolucao.getFuncionario());
+
+		this.conexao.executeNonQuery(MAPEAMENTO, "INSERIR", parametros);
 	}
 
 	public void remover(int id) throws SQLException {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void atualizar(Devolucao devolucao) throws SQLException {
+		// TODO Auto-generated method stub
+
+	}
+
+	public int buscarPorAlunoCount(Aluno aluno) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Collection<Devolucao> buscarPorFuncionario(Funcionario funcionario)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Collection<Devolucao> buscarPorLivro(Livro livro)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

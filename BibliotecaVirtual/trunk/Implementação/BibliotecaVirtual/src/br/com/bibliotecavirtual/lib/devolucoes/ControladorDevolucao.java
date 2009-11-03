@@ -1,7 +1,6 @@
 package br.com.bibliotecavirtual.lib.devolucoes;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 
 import br.com.bibliotecavirtual.lib.comum.DAOFactory;
 import br.com.bibliotecavirtual.lib.comum.Data;
@@ -16,19 +15,24 @@ public class ControladorDevolucao {
 		this.repositorioDevolucao = factory.getDevolucaoDAO();
 	}
 
-	public int quantidadeDevolucao(Livro livro) throws SQLException 
-	{
+	public int quantidadeDevolucao(Livro livro) throws SQLException {
 		return repositorioDevolucao.buscarPorLivroCount(livro);
 	}
-	
-	public Data calcularDataDevolucao(Data data) 
-	{
+
+	public Data calcularDataDevolucao(Data data) {
 		Data retorno = null;
-			
+
 		retorno = new Data();
-		
+
 		retorno.setDate(retorno.getDate() + 7);
 
 		return retorno;
+	}
+
+	public void devolver(Devolucao devolucao) throws SQLException {
+		Data dataDevolucao = devolucao.getAluguel().getDataDevolucao();
+		Data atual = new Data();
+		if (dataDevolucao.before(atual))
+			this.repositorioDevolucao.inserir(devolucao);
 	}
 }
