@@ -22,6 +22,8 @@ public class Conexao implements IConexao {
 
 	private Properties mapeamento;
 
+	private Properties chavesXml;
+
 	private Connection _connection;
 
 	private SQLServerDataSource _dataSource;
@@ -36,6 +38,10 @@ public class Conexao implements IConexao {
 			this.mapeamento = new Properties();
 			this.mapeamento.load(new FileInputStream(this.configuracao
 					.getProperty("mapeamentoXml")));
+
+			this.chavesXml = new Properties();
+			this.chavesXml.load(new FileInputStream(this.configuracao
+					.getProperty("chavesXml")));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,7 +86,8 @@ public class Conexao implements IConexao {
 			e.printStackTrace();
 		}
 
-		String consulta = prop.getProperty(chave);
+		String keyXml = this.chavesXml.getProperty(chave);
+		String consulta = prop.getProperty(keyXml);
 
 		this.abrirConexao();
 
@@ -118,7 +125,8 @@ public class Conexao implements IConexao {
 			e.printStackTrace();
 		}
 
-		String consulta = prop.getProperty(chave);
+		String keyXml = this.chavesXml.getProperty(chave);
+		String consulta = prop.getProperty(keyXml);
 		this.abrirConexao();
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);
