@@ -19,13 +19,10 @@ public class ControladorDevolucao {
 		return repositorioDevolucao.buscarPorLivroCount(livro);
 	}
 
+	@SuppressWarnings("deprecation")
 	public Data calcularDataDevolucao(Data data) {
-		Data retorno = null;
-
-		retorno = new Data();
-
+		Data retorno = (Data) data.clone();
 		retorno.setDate(retorno.getDate() + 7);
-
 		return retorno;
 	}
 

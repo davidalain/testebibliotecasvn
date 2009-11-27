@@ -147,13 +147,13 @@ public class AluguelDAO implements IAluguelDAO {
 
 		parametros.add(aluguel.getAluno().getId());
 
-		parametros.add(aluguel.getFuncionario());
+		parametros.add(aluguel.getFuncionario().getId());
 
-		parametros.add(aluguel.getDataAluguel());
+		parametros.add(aluguel.getDataAluguel().toString());
 
-		parametros.add(aluguel.getDataDevolucao());
+		parametros.add(aluguel.getDataDevolucao().toString());
 
-		this.conexao.executeNonQuery(MAPEAMENTO, "INSERIR", parametros);
+		this.conexao.executeNonQuery(MAPEAMENTO, "inserir", parametros);
 	}
 
 	public void remover(int id) throws SQLException {

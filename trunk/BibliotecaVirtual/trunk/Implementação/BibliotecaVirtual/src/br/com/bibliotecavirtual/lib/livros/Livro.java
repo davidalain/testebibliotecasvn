@@ -6,11 +6,11 @@ public class Livro {
 	private String autor;
 	private String isbn;
 	private String area;
-	private String ano;
+	private int ano;
 	private String resumo;
-	
+
 	public Livro(int id, String titulo, String autor, String isbn, String area,
-			String ano, String resumo) {
+			int ano, String resumo) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -20,9 +20,9 @@ public class Livro {
 		this.ano = ano;
 		this.resumo = resumo;
 	}
-	
+
 	public Livro(String titulo, String autor, String isbn, String area,
-			String ano, String resumo) {
+			int ano, String resumo) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -31,8 +31,6 @@ public class Livro {
 		this.ano = ano;
 		this.resumo = resumo;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -49,7 +47,6 @@ public class Livro {
 	public void setResumo(String resumo) {
 		this.resumo = resumo;
 	}
-
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
@@ -83,11 +80,11 @@ public class Livro {
 		return area;
 	}
 
-	public void setAno(String ano) {
+	public void setAno(int ano) {
 		this.ano = ano;
 	}
 
-	public String getAno() {
+	public int getAno() {
 		return ano;
 	}
 }
