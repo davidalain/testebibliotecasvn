@@ -86,8 +86,8 @@ public class Conexao implements IConexao {
 			e.printStackTrace();
 		}
 
-		String keyXml = this.chavesXml.getProperty(chave);
-		String consulta = prop.getProperty(keyXml);
+		// String keyXml = this.chavesXml.getProperty(chave);
+		String consulta = prop.getProperty(chave);
 
 		this.abrirConexao();
 
@@ -125,8 +125,8 @@ public class Conexao implements IConexao {
 			e.printStackTrace();
 		}
 
-		String keyXml = this.chavesXml.getProperty(chave);
-		String consulta = prop.getProperty(keyXml);
+		// String keyXml = this.chavesXml.getProperty(chave);
+		String consulta = prop.getProperty(chave);
 		this.abrirConexao();
 
 		PreparedStatement comando = this._connection.prepareStatement(consulta);

@@ -48,7 +48,7 @@ public class AlunoDAO implements IAlunoDAO {
 		parametros.add(email);
 		parametros.add(matricula);
 
-		conexao.executeNonQuery(MAPEAMENTO, "INSERIR", parametros);
+		conexao.executeNonQuery(MAPEAMENTO, "inserir", parametros);
 
 	}
 
