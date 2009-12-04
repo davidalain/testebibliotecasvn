@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+      
+ <struts-config>	
+  	<form-beans>
+  		<form-bean name="login" type="br.com.bibliotecavirtual.web.beans.LoginBean"></form-bean>
+  		<form-bean name="alugar" type="br.com.bibliotecavirtual.web.beans.AluguelBean"></form-bean>
+  	</form-beans>
+  	<action-mappings>
+  		<action path="/Logar"
+  			type="br.com.bibliotecavirtual.web.actions.LogarAction"
+  			name="login"
+  			scope="request">
+  			<forward name="sucesso" path="/WEB-INF/jsp/alugar.jsp"/>
+  			<forward name="erro" path="/WEB-INF/jsp/erro.jsp"/>
+  		</action>
+  		
+  		<action path="/Alugar" 
+  			type="br.com.bibliotecavirtual.web.actions.AluguelAction"
+  			name="alugar">
+  			<forward name="sucesso" path="/WEB-INF/jsp/dadosAluguel.jsp"></forward>	
+  			<forward name="erro" path="/WEB-INF/jsp/erro.jsp"></forward>	
+  		</action>
+  	</action-mappings>
+ </struts-config>
