@@ -31,6 +31,7 @@ public class Conexao implements IConexao {
 	private Conexao() {
 
 		try {
+
 			this.configuracao = new Properties();
 			this.configuracao.load(new FileInputStream(
 					"configuracao.properties"));
@@ -39,9 +40,10 @@ public class Conexao implements IConexao {
 			this.mapeamento.load(new FileInputStream(this.configuracao
 					.getProperty("mapeamentoXml")));
 
-			this.chavesXml = new Properties();
-			this.chavesXml.load(new FileInputStream(this.configuracao
-					.getProperty("chavesXml")));
+			/*
+			 * this.chavesXml = new Properties(); this.chavesXml.load(new
+			 * FileInputStream(this.configuracao .getProperty("chavesXml")));
+			 */
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,7 +112,9 @@ public class Conexao implements IConexao {
 	public ResultSet executeQuery(String mapeamento, String chave,
 			ArrayList<Object> parametros) throws SQLException {
 		Properties prop = new Properties();
-
+		// System.out.println("Configuracao :" + this.configuracao);
+		// System.out.println(this.configuracao.getProperty("BD_instanceName"));
+		// System.out.println(this.mapeamento);
 		try {
 			String caminho = this.mapeamento.getProperty(mapeamento);
 			prop.loadFromXML(new FileInputStream(caminho));
